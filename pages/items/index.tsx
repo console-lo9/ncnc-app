@@ -1,7 +1,8 @@
-import React from 'react'
+import ItemList from 'components/itemLists/ItemList';
+import React from 'react';
 
 const Items = () => {
-  return <div>Items</div>
-}
+    return <ItemList conCategoryId={67} />;
+};
 
-export default Items
+export default Items;
