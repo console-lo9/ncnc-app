@@ -1,8 +1,15 @@
-import ItemList from 'components/itemLists/ItemList';
-import React from 'react';
+import ItemList from 'components/ItemLists/ItemList';
+import { useRouter } from 'next/router';
+import React, { Fragment } from 'react';
 
 const Items = () => {
-    return <ItemList conCategoryId={67} />;
+    // 67 => 까페
+
+    return (
+        <Fragment>
+            <ItemList conCategoryId={67} />
+        </Fragment>
+    );
 };
 
 export default Items;
