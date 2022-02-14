@@ -1,34 +1,191 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center"> 니콘내콘 과제 </h1>
 
-## Getting Started
+<h3 align="center"> 서비스 링크: </h3>
 
-First, run the development server:
+<p align="center"><img width="500" src="https://bit.ly/3HyINHE" /></p>
 
-```bash
-npm run dev
-# or
-yarn dev
+# 👏 프로젝트 소개
+
+>
+
+## 🙋‍♀️🙋‍♂️ 팀원
+
+<table>
+<thead>
+<tr>
+<th><p align="center">프로필</p></th>
+<th><p>이름</p></th>
+<th><p>담당 기능</p></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>
+<img
+src="https://avatars.githubusercontent.com/Ubermensch0608"
+width="100px;"
+alt=""
+/>
+</td>
+<td><b><a href="https://github.com/Ubermensch0608"
+>우종원</a></b></sub></td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+<img
+src="https://avatars.githubusercontent.com/crucial-sub"
+width="100px;"
+alt=""
+/>
+</td>
+<td><b><a href="https://github.com/crucial-sub"
+>박중섭</a></b>
+<td></td>
+</tr>
+
+<tr>
+<td>
+<img
+src="https://avatars.githubusercontent.com/ttaerrim"
+width="100px;"
+alt=""
+/></td>
+<td><a href="https://github.com/ttaerrim" >이태림</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td align="center">
+<img
+src="https://avatars.githubusercontent.com/penguin311"
+width="100px;"
+alt=""
+/><br /></td>
+<td><b><a href="https://github.com/penguin311"
+>임수영</a></b></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+## 🚀 스택
+
+`React` `typescript` `Next.js`
+
+## ⚙ 설치
+
+```
+# clone the project
+$ git clone https://github.com/console-lo9/messenger.git
+
+# install modules
+$ cd ncnc-app
+$ npm install || yarn install
+
+# start
+$ npm run dev || yarn dev
+
+⠀
+⠀  You can now view this project in the browser.
+⠀  http://localhost:3000/
+⠀
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔗 의존성
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+"dependencies": {
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+}
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 📂 파일 구조
 
-## Learn More
+    ├── public
+    ├── server
+    └── src
+        ├── assets
+        ├── components
+        │   ├── Header
+        │   ├── Login
+        │   ├── Messages
+        │   ├── Modal
+        │   ├── NewMessage
+        │   └── SideNav
+        ├── hooks
+        ├── layout
+        ├── models
+        ├── pages
+        ├── store
+        │   ├── action
+        │   └── reducer
+        └── utils
+        │   └── constants
+        ├── App.js
+        ├── GlobalStyle.js
+        └── index.js
 
-To learn more about Next.js, take a look at the following resources:
+> 작성 후 삭제 참고 (https://www.lesstif.com/lpt/linux-tree-54952142.html)
+>
+> $ tree -N -L 2 -d -I "node_modules" 또는 vscode File-tree-generator extension 사용
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ 구현 사항
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+-   [ ] `Next.js`와 `Typescript` 사용
+-   [ ] 니콘내콘 모바일 웹 페이지와 같은 라우팅
+-   [ ] 3분 이내의 E2E 테스트 구현
+-   [ ] 재사용 가능한 Container
 
-## Deploy on Vercel
+-   [ ] Header
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    -   [ ] 홈인 경우 햄버거 버튼, 홈이 아닐 경우 왼쪽 상단에 뒤로가기 버튼
+    -   [ ] 카테고리, 브랜드 페이지에서 선택한 메뉴를 중앙에 출력
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-   [ ] 홈
+
+    -   [ ] 배너 캐러셀 라이브러리 없이 랜덤 이미지로 직접 구현
+    -   [ ] 브랜드 메뉴 출력 (API)
+    -   [ ] 땡처리 리스트 출력 (API)
+
+-   [ ] 브랜드 페이지 /categories
+
+    -   [ ] 카테고리 상단 메뉴바는 슬라이드가 되도록 구현
+    -   [ ] 카테고리 내에서 브랜드 리스트 출력
+    -   [ ] 땡처리콘, 까페 등 각 카테고리 페이지 생성
+    -   [ ] 브랜드 클릭 or 터치 시 해당 브랜드 상세로 이동
+
+-   [ ] 상품 리스트 /brands
+
+    -   [ ] 상품 리스트 출력 (API)
+    -   [ ] 상품 개수 좌측 상단에 출력
+    -   [ ] 이미지, 상품명, 할인율, 할인가, ~~정가~~
+
+-   [ ] 상품 상세 /items
+
+    -   [ ] 옵션 미선택 시 옵션 선택하기 버튼 렌더링
+    -   [ ] 옵션 선택 버튼 클릭 시 옵션 선택 창 노출
+    -   [ ] 옵션 선택 시 옵션 창 닫히고 선택 옵션과 구매하기 버튼 렌더링
+    -   [ ] 옵션 선택 창 백그라운드 클릭 시 창 닫힘
+    -   [ ] 선택한 옵션 클릭 시 옵션 선택 창 노출
+
+-   [ ] 고객 센터 /contacts
+    -   [ ] 홈 화면의 좌측 상단 햄버거 메뉴 눌렀을 때 고객 센터 페이지로 이동하는 메뉴 노출
+    -   [ ] 왼쪽에서 오른쪽으로 화면을 100% 덮는 애니메이션
+    -   [ ] 상담 시간 안내
+    -   [ ] 구매 / 판매 탭 구현
+    -   [ ] 구매 / 판매 탭에 맞는 QnA 리스트 조회
+
+## 🗺 한 눈으로 보는 구현 기능
+
+## 💡 과제 후기
+
+### **우종원** 🍀
+
+### **박중섭** ✨
+
+### **이태림** 🐯
+
+### **임수영** 🐧
