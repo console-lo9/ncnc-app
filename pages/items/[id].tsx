@@ -4,9 +4,10 @@ import React from 'react';
 
 const Items = () => {
     const router = useRouter();
-    const { pid } = router.query;
-    console.log(router);
-    return <Item conItemId={137} />;
+    const { id } = router.query;
+
+    if (!id) return <div>로딩 중</div>;
+    return <Item conItemId={Number(id)} />;
 };
 
 export default Items;
