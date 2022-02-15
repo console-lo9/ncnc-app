@@ -1,7 +1,9 @@
-import React from 'react'
+import ItemList from 'components/ItemLists/ItemList';
 
 const Items = () => {
-  return <div>Items</div>
-}
+    // 67 => 까페
 
-export default Items
+    return <ItemList conCategoryId={67} />;
+};
+
+export default Items;

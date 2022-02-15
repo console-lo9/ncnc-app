@@ -1,14 +1,16 @@
 import { reset } from 'styles/globalStyles';
 import { Global } from '@emotion/react';
 import type { AppProps } from 'next/app';
+import { wrapper } from 'store';
+import { Fragment } from 'react';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     return (
-        <>
+        <Fragment>
             <Global styles={reset} />
-            <Component {...pageProps} />;
-        </>
+            <Component {...pageProps} />
+        </Fragment>
     );
-}
+};
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
