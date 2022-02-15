@@ -17,15 +17,22 @@ const Wrapper = styled.nav`
     p {
         font-weight: 600;
         font-size: 15px;
-        margin-left: 7.5rem;
+        margin-right: 30px;
     }
 `;
 
 const IconWrap = styled.button`
-    width: 30px;
-    height: 30px;
-    padding: 7px;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
     margin-left: 6px;
+`;
+
+const Text = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 `;
 
 // const navigate = useNavigate();
@@ -38,14 +45,18 @@ const Header = ({ name }: { name: string }): JSX.Element => {
                     <IconWrap>
                         <Image src={back} alt="menu" />
                     </IconWrap>
-                    <p>{name}</p>
+                    <Text>
+                        <p>{name}</p>
+                    </Text>
                 </>
             ) : (
                 <>
                     <IconWrap>
                         <Image src={iconMenu} alt="menu" />
                     </IconWrap>
-                    <p>니콘 내콘</p>
+                    <Text>
+                        <p>니콘 내콘</p>
+                    </Text>
                 </>
             )}
         </Wrapper>

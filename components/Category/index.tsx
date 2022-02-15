@@ -71,7 +71,6 @@ export const SectionWrapper = styled.div`
     grid-template-columns: repeat(3, 1fr);
     padding: 20px;
     background-color: rgb(238, 238, 238);
-    margin-top: 40px;
     overflow: auto;
 `;
 

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const ItemsHolder = styled.ul`
     height: 100%;
     background: rgb(238, 238, 238);
+    margin-top: 60px;
 `;
 
 export const ItemInfoWrapper = styled.div`

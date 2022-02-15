@@ -84,7 +84,7 @@ const CategoryNavBar = styled.nav`
 `;
 const CategoryNavBox = styled.div`
     width: 100%;
-    height: 41px;
+    height: 55px;
     display: flex;
     overflow-x: scroll;
     white-space: nowrap;
@@ -101,7 +101,7 @@ const CategoryNavSlider = styled.div`
 const CategoryNavA = styled.a`
     display: inline-flex;
     padding: 10px 14px;
-    height: 41px;
+    height: 55px;
     border: none;
     border-bottom: 1px solid #ccc;
     margin: 0 10px;
