@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import axios from 'axios';
 import useAxios from 'hooks/useAxios';
 import Container from 'layout/Container';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { BrandType, ConCategory1, ConCategory2s, ConItems } from 'types/items';
 
@@ -28,39 +29,41 @@ const BrandItems: React.FC<BrandItemsProp> = ({ conCategoryId, brandId }) => {
         <Container>
             <ItemsHolder>
                 {brandItems?.map((item) => (
-                    <li key={item.id}>
-                        <ItemInfoWrapper>
-                            <div>
-                                <ItemImage src={item.imageUrl} />
-                            </div>
-                            <InfoRight>
-                                <SellingPrice>
-                                    <b>{item.name}</b>
-                                </SellingPrice>
-                                <InfoBottom>
-                                    <DiscountRate>
-                                        {Math.ceil(
-                                            100 *
-                                                (1 -
-                                                    item.minSellingPrice /
-                                                        item.originalPrice),
-                                        )}
-                                        %
-                                    </DiscountRate>
+                    <Link key={item.id} href={`/items/${item.id}`}>
+                        <li>
+                            <ItemInfoWrapper>
+                                <div>
+                                    <ItemImage src={item.imageUrl} />
+                                </div>
+                                <InfoRight>
                                     <SellingPrice>
-                                        {item.minSellingPrice.toLocaleString()}
-                                        원
+                                        <b>{item.name}</b>
                                     </SellingPrice>
-                                    <OriginalPrice>
-                                        <s>
-                                            {item.originalPrice.toLocaleString()}
+                                    <InfoBottom>
+                                        <DiscountRate>
+                                            {Math.ceil(
+                                                100 *
+                                                    (1 -
+                                                        item.minSellingPrice /
+                                                            item.originalPrice),
+                                            )}
+                                            %
+                                        </DiscountRate>
+                                        <SellingPrice>
+                                            {item.minSellingPrice.toLocaleString()}
                                             원
-                                        </s>
-                                    </OriginalPrice>
-                                </InfoBottom>
-                            </InfoRight>
-                        </ItemInfoWrapper>
-                    </li>
+                                        </SellingPrice>
+                                        <OriginalPrice>
+                                            <s>
+                                                {item.originalPrice.toLocaleString()}
+                                                원
+                                            </s>
+                                        </OriginalPrice>
+                                    </InfoBottom>
+                                </InfoRight>
+                            </ItemInfoWrapper>
+                        </li>
+                    </Link>
                 ))}
             </ItemsHolder>
         </Container>
