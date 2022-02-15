@@ -189,6 +189,10 @@ $ npm run dev || yarn dev
 
 ## 🗺 한 눈으로 보는 구현 기능
 
+<img width="400" src="https://user-images.githubusercontent.com/28384562/154145083-d5024c30-dbec-4626-a3c1-22a14b8ef00a.gif" />
+<img width="400" src="https://user-images.githubusercontent.com/28384562/154145176-07ec7cde-020b-4139-9335-65d47a4664e8.gif" />
+
+ 
 ## 💡 과제 후기
 
 ### **우종원** 🍀
