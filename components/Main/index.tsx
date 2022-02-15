@@ -1,15 +1,12 @@
-import styled from '@emotion/styled';
-import { useDispatch } from 'react-redux';
-
+import { Fragment } from 'react';
+import useAxios from 'hooks/useAxios';
 import Link from 'next/link';
-import { selectBrandActions } from 'store';
 
 import Section from 'layout/Section';
-
-import { CategoryListType } from 'types/categoryListTypes';
-import useAxios from 'hooks/useAxios';
-import { Fragment } from 'react';
 import { SectionWrapper } from 'components/Category';
+import { CategoryListType } from 'types/categoryListTypes';
+
+import styled from '@emotion/styled';
 
 const Category = (): JSX.Element => {
     const conCategory1s =
@@ -55,7 +52,7 @@ const Category = (): JSX.Element => {
 const TitleDiv = styled.div`
     display: flex;
     width: 100%;
-
+    padding-left: 20px;
     margin: 14px 0;
 `;
 const WarnDiv = styled.div`
