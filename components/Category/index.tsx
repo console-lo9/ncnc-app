@@ -43,13 +43,15 @@ const Category = ({
                                                 id={i.toString()}
                                                 onClick={getBrandHandler}
                                             >
-                                                <BrandImg
-                                                    src={category.imageUrl}
-                                                    alt="logo"
-                                                />
-                                                <BrandName>
-                                                    {category.name}
-                                                </BrandName>
+                                                <GrowDiv>
+                                                    <BrandImg
+                                                        src={category.imageUrl}
+                                                        alt="logo"
+                                                    />
+                                                    <BrandName>
+                                                        {category.name}
+                                                    </BrandName>
+                                                </GrowDiv>
                                             </SectionA>
                                         </Link>
                                     </SectionDiv>
@@ -84,6 +86,14 @@ const SectionDiv = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 0.5rem;
+`;
+const GrowDiv = styled.div`
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
+    &:hover {
+        -webkit-transform: scale(1.05);
+    }
 `;
 
 const SectionA = styled.a`
