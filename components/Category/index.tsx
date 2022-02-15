@@ -9,15 +9,21 @@ import CategoryNav from './CategoryNav';
 import { ItemsHolder } from 'components/Brand/styled';
 import { conCategory1, conCategory2s } from 'types/categoryTypes';
 import { conCategory1s } from 'types/categoryListTypes';
+import Deal from 'components/Deal/Deal';
+import { useEffect } from 'react';
+import { fetcher } from 'utils/fetcher';
+import { DealItemProps } from 'components/Deal/types';
 
 const Category = ({
     categories,
     categoryList,
     id,
+    conItems,
 }: {
     categories: conCategory1 | null;
     categoryList: conCategory1s[];
     id: number;
+    conItems: DealItemProps[];
 }): JSX.Element => {
     const dispatch = useDispatch();
     const getBrandHandler = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -30,11 +36,13 @@ const Category = ({
         <CategoryContainer>
             <CategoryNav categoryList={categoryList} id={id} />
             <ItemsHolder>
-                <SectionWrapper>
-                    {id === 1 && categories ? (
-                        <h3></h3>
-                    ) : (
-                        categories!.conCategory2s.map(
+                {id === 1 && categories ? (
+                    <DealBox>
+                        <Deal onDealItems={conItems} />
+                    </DealBox>
+                ) : (
+                    <SectionWrapper>
+                        {categories!.conCategory2s.map(
                             (category: conCategory2s, i: number) => (
                                 <Section key={`category-${i}`}>
                                     <SectionDiv>
@@ -57,9 +65,9 @@ const Category = ({
                                     </SectionDiv>
                                 </Section>
                             ),
-                        )
-                    )}
-                </SectionWrapper>
+                        )}
+                    </SectionWrapper>
+                )}
             </ItemsHolder>
         </CategoryContainer>
     );
@@ -70,6 +78,8 @@ const CategoryContainer = styled.div`
     margin-top: 59px;
     flex-direction: column;
 `;
+
+const DealBox = styled.div``;
 
 export const SectionWrapper = styled.div`
     display: grid;

@@ -9,6 +9,7 @@
 // };
 
 import Category from 'components/Category';
+import { DealItemProps } from 'components/Deal/types';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -22,6 +23,7 @@ const CategoriesPage: NextPage = () => {
     const dispatch = useDispatch();
     const [categories, setCategories] = useState<conCategory1 | null>(null);
     const [categoryList, setCategoryList] = useState<conCategory1s[]>([]);
+    const [conItemList, setConItemList] = useState<DealItemProps[]>([]);
     const router = useRouter();
     const { id } = router.query;
 
@@ -39,6 +41,12 @@ const CategoriesPage: NextPage = () => {
                 setCategoryList(conCategory1s);
             };
             getCategoryList();
+            const getConItems = async () => {
+                const fetchUrl = 'con-items/soon';
+                const { conItems } = await fetcher(fetchUrl);
+                setConItemList(conItems);
+            };
+            getConItems();
 
             dispatch(getCategoryIdActions.category(Number(id)));
             return;
@@ -50,6 +58,7 @@ const CategoriesPage: NextPage = () => {
                 categories={categories}
                 categoryList={categoryList}
                 id={Number(id)}
+                conItems={conItemList}
             />
         )
     );

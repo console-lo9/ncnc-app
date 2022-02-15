@@ -17,26 +17,30 @@ type ButtonDivProps = {
 
 const Wrapper = styled.div`
     display: flex;
+    overflow: hidden;
+    margin-top: 55px;
 `;
 
 const Container = styled.div<ContainerProps>`
-    width: 1125px;
     display: flex;
+    flex-direction: row;
     transform: translateX(${(props) => props.translateX}px);
     transition: 350ms all ease-in-out;
 `;
 
 const Inner = styled.div`
-    width: 375px;
-    height: 141px;
+    flex-shrink: 0;
+    width: 672px;
+    height: 252px;
     overflow: hidden;
     position: relative;
 `;
 
 const Buttons = styled.div`
     position: absolute;
-    top: 165px;
-    left: 310px;
+    top: 270px;
+    left: 80%;
+    transform: translateX(100%);
     display: flex;
 `;
 
@@ -62,20 +66,44 @@ const Carousel = () => {
         }
     };
 
-    const cardWidth = -375;
+    const cardWidth = -672;
     const translateX = cardWidth * current;
 
     return (
         <Wrapper>
             <Container translateX={translateX}>
                 <Inner>
-                    <Image src={banner1} width={375} height={141} alt="menu" />
+                    <Image
+                        src={banner1}
+                        width={672}
+                        height={252}
+                        alt="menu"
+                        layout="fill"
+                        sizes="672px"
+
+                    />
                 </Inner>
                 <Inner>
-                    <Image src={banner2} width={375} height={141} alt="menu" />
+                    <Image
+                        src={banner2}
+                        width={672}
+                        height={252}
+                        alt="menu"
+                        layout="fill"
+                        sizes="672px"
+
+                    />
                 </Inner>
                 <Inner>
-                    <Image src={banner3} width={375} height={141} alt="menu" />
+                    <Image
+                        src={banner3}
+                        width={672}
+                        height={252}
+                        alt="menu"
+                        layout="fill"
+                        sizes="672px"
+
+                    />
                 </Inner>
             </Container>
             <Buttons>
