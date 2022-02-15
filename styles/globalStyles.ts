@@ -6,6 +6,7 @@ export const reset = css`
         margin: 0;
         padding: 0;
         font-family: 'Noto Sans KR', sans-serif;
+        -ms-overflow-style: none;
     }
     a {
         text-decoration: none;
@@ -47,6 +48,9 @@ export const reset = css`
         font-size: inherit;
     }
     /* Default CSS */
+    html {
+        font-size: 14px;
+    }
     body {
         font-family: apple sd gothic neo, sans-srif;
         font-size: 14px;
@@ -55,7 +59,11 @@ export const reset = css`
         color: #222;
         height: 100vh;
     }
-    #root {
-        height: 100%;
+    #__next {
+        height: 100vh;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
     }
 `;

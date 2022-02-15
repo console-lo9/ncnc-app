@@ -27,11 +27,13 @@ const Category = ({
     };
 
     return (
-        <>
+        <CategoryContainer>
             <CategoryNav categoryList={categoryList} id={id} />
             <ItemsHolder>
                 <SectionWrapper>
-                    {categories &&
+                    {id === 1 && categories ? (
+                        <h3></h3>
+                    ) : (
                         categories!.conCategory2s.map(
                             (category: conCategory2s, i: number) => (
                                 <Section key={`category-${i}`}>
@@ -53,18 +55,26 @@ const Category = ({
                                     </SectionDiv>
                                 </Section>
                             ),
-                        )}
+                        )
+                    )}
                 </SectionWrapper>
             </ItemsHolder>
-        </>
+        </CategoryContainer>
     );
 };
+
+const CategoryContainer = styled.div`
+    display: flex;
+    margin-top: 59px;
+    flex-direction: column;
+`;
 
 export const SectionWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 20px;
-    background: rgb(238, 238, 238);
+    background-color: rgb(238, 238, 238);
+    overflow: auto;
 `;
 
 const SectionDiv = styled.div`
