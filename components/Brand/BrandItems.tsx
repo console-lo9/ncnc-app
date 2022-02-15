@@ -1,9 +1,10 @@
-import styled from '@emotion/styled';
-import axios from 'axios';
-import useAxios from 'hooks/useAxios';
-import Container from 'layout/Container';
 import { useEffect, useState } from 'react';
-import { BrandType, ConCategory1, ConCategory2s, ConItems } from 'types/items';
+import { useSelector } from 'react-redux';
+import useAxios from 'hooks/useAxios';
+
+import { RootState } from 'store';
+import { ConCategory1, ConCategory2s, ConItems } from 'types/items';
+import styled from '@emotion/styled';
 
 export interface BrandItemsProp {
     conCategoryId: number;
@@ -11,6 +12,10 @@ export interface BrandItemsProp {
 }
 
 const BrandItems: React.FC<BrandItemsProp> = ({ conCategoryId, brandId }) => {
+    const selectedBrand = useSelector(
+        (state: RootState) => state.brand.selectedBrand,
+    );
+
     const [brandItems, setBrandItems] = useState<ConItems[]>();
     const fetchData = useAxios<{ conCategory1: ConCategory1 }>(
         `https://api2.ncnc.app/con-category1s/${conCategoryId}/nested`,
@@ -20,50 +25,46 @@ const BrandItems: React.FC<BrandItemsProp> = ({ conCategoryId, brandId }) => {
 
     useEffect(() => {
         if (brandList) {
-            setBrandItems(brandList[0].conItems);
+            setBrandItems(brandList[selectedBrand].conItems);
         }
     }, [brandList]);
 
     return (
-        <Container>
-            <ItemsHolder>
-                {brandItems?.map((item) => (
-                    <li key={item.id}>
-                        <ItemInfoWrapper>
-                            <div>
-                                <ItemImage src={item.imageUrl} />
-                            </div>
-                            <InfoRight>
+        <ItemsHolder>
+            {brandItems?.map((item) => (
+                <li key={item.id}>
+                    <ItemInfoWrapper>
+                        <div>
+                            <ItemImage src={item.imageUrl} />
+                        </div>
+                        <InfoRight>
+                            <SellingPrice>
+                                <b>{item.name}</b>
+                            </SellingPrice>
+                            <InfoBottom>
+                                <DiscountRate>
+                                    {Math.ceil(
+                                        100 *
+                                            (1 -
+                                                item.minSellingPrice /
+                                                    item.originalPrice),
+                                    )}
+                                    %
+                                </DiscountRate>
                                 <SellingPrice>
-                                    <b>{item.name}</b>
+                                    {item.minSellingPrice.toLocaleString()}원
                                 </SellingPrice>
-                                <InfoBottom>
-                                    <DiscountRate>
-                                        {Math.ceil(
-                                            100 *
-                                                (1 -
-                                                    item.minSellingPrice /
-                                                        item.originalPrice),
-                                        )}
-                                        %
-                                    </DiscountRate>
-                                    <SellingPrice>
-                                        {item.minSellingPrice.toLocaleString()}
-                                        원
-                                    </SellingPrice>
-                                    <OriginalPrice>
-                                        <s>
-                                            {item.originalPrice.toLocaleString()}
-                                            원
-                                        </s>
-                                    </OriginalPrice>
-                                </InfoBottom>
-                            </InfoRight>
-                        </ItemInfoWrapper>
-                    </li>
-                ))}
-            </ItemsHolder>
-        </Container>
+                                <OriginalPrice>
+                                    <s>
+                                        {item.originalPrice.toLocaleString()}원
+                                    </s>
+                                </OriginalPrice>
+                            </InfoBottom>
+                        </InfoRight>
+                    </ItemInfoWrapper>
+                </li>
+            ))}
+        </ItemsHolder>
     );
 };
 

@@ -1,11 +1,5 @@
-import {
-    combineReducers,
-    configureStore,
-    createSlice,
-    Store,
-} from '@reduxjs/toolkit';
-import { Context, createWrapper, HYDRATE } from 'next-redux-wrapper';
-import { BrandType, ConItems } from 'types/items';
+import { combineReducers, configureStore, createSlice } from '@reduxjs/toolkit';
+import { createWrapper } from 'next-redux-wrapper';
 
 const fetchInitialState = {
     fetchData: [],
@@ -21,18 +15,38 @@ const fetchDataSlice = createSlice({
     },
 });
 
+interface brandTypes {
+    selectedBrand: number;
+}
+
+const brandInitialState: brandTypes = { selectedBrand: 0 };
+const selectBrandSlice = createSlice({
+    name: 'brand',
+    initialState: brandInitialState,
+    reducers: {
+        brand(state, action) {
+            state.selectedBrand = action.payload;
+        },
+    },
+});
+
 const rootReducer = combineReducers({
     fetch: fetchDataSlice.reducer,
+    brand: selectBrandSlice.reducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
 
 const makeStore = () =>
     configureStore({
-        reducer: { fetch: fetchDataSlice.reducer },
+        reducer: {
+            fetch: fetchDataSlice.reducer,
+            brand: selectBrandSlice.reducer,
+        },
     });
 
 export const fetchDataActions = fetchDataSlice.actions;
+export const selectBrandActions = selectBrandSlice.actions;
 
 export const wrapper = createWrapper(makeStore, {
     debug: process.env.NODE_ENV !== 'production',
