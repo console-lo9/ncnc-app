@@ -9,10 +9,8 @@ const useAxios = <T>(url: string) => {
     useEffect(() => {
         const fetchData = async (url: string) => {
             const { data } = await axios.get(url);
-
             setDatas(data);
         };
-
         fetchData(url);
     }, []);
     return datas;

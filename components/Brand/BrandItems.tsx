@@ -1,42 +1,16 @@
-import useAxios from 'hooks/useAxios';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-
-import { RootState } from 'store';
-import { ConCategory1, ConCategory2s, ConItems } from 'types/items';
+import React from 'react';
+import { ConItems } from 'types/items';
 import * as Styled from './styled';
 
 export interface BrandItemsProp {
-    conCategoryId: number;
-    brandId: number;
+    conItems: ConItems[];
 }
 
-const BrandItems: React.FC<BrandItemsProp> = ({ conCategoryId, brandId }) => {
-    const [brandItems, setBrandItems] = useState<ConItems[]>();
-    const selectedBrand = useSelector(
-        (state: RootState) => state.brand.selectedBrand,
-    );
-
-    const fetchData = useAxios<{ conCategory1: ConCategory1 }>(
-        `https://api2.ncnc.app/con-category1s/${conCategoryId}/nested`,
-    );
-
-    const brandList: ConCategory2s[] = fetchData?.conCategory1?.conCategory2s!;
-
-    useEffect(() => {
-        if (brandList) {
-            setBrandItems(brandList[selectedBrand].conItems);
-        }
-    }, [brandList, conCategoryId]);
-
-    if (!brandItems) {
-        return <div>Loading...</div>;
-    }
-
+const BrandItems2: React.FC<BrandItemsProp> = ({ conItems }) => {
     return (
         <Styled.ItemsHolder>
-            {brandItems?.map((item) => (
+            {conItems.map((item) => (
                 <li key={item.id}>
                     <Link href={`/items/${item.id}`}>
                         <Styled.ItemInfoWrapper>
@@ -77,4 +51,4 @@ const BrandItems: React.FC<BrandItemsProp> = ({ conCategoryId, brandId }) => {
     );
 };
 
-export default BrandItems;
+export default BrandItems2;
