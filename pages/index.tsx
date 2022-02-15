@@ -7,13 +7,18 @@ import Deal from 'components/Deal/Deal';
 import { DealItemProps } from 'components/Deal/types';
 
 import Carousel from 'components/Carousel/Carousel';
+import Main from 'components/Main';
 
+import { CategoryListType } from 'types/categoryListTypes';
 interface HomeProps {
     conItems: DealItemProps[];
 }
 const Home: NextPage<HomeProps> = ({ conItems }) => {
-    useAxios('/con-category1s');
+    const conCategory1s =
+        useAxios<CategoryListType>('/con-category1s')?.conCategory1s;
+
     useAxios('/con-items/soon');
+
     return (
         <div>
             <Head>
@@ -25,6 +30,7 @@ const Home: NextPage<HomeProps> = ({ conItems }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Carousel />
+            <Main />
             <Deal onDealItems={conItems} />
         </div>
     );
