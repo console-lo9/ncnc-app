@@ -30,7 +30,7 @@ const Home: NextPage<HomeProps> = ({ conItems }) => {
     );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const fetchUrl = `https://api2.ncnc.app/con-items/soon`;
     const { data } = await axios.get<{ conItems: DealItemProps[] }>(fetchUrl);
     const conItems = data.conItems;

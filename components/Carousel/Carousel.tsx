@@ -81,6 +81,7 @@ const Carousel = () => {
             <Buttons>
                 {[0, 1, 2].map((dot) => (
                     <BtnDiv
+                        key={Math.random()}
                         onClick={() => ClickHandler(dot)}
                         isActive={current === dot}
                     />
