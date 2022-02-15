@@ -80,7 +80,6 @@ const Carousel = () => {
                         alt="menu"
                         layout="fill"
                         sizes="672px"
-
                     />
                 </Inner>
                 <Inner>
@@ -91,7 +90,6 @@ const Carousel = () => {
                         alt="menu"
                         layout="fill"
                         sizes="672px"
-
                     />
                 </Inner>
                 <Inner>
@@ -102,12 +100,11 @@ const Carousel = () => {
                         alt="menu"
                         layout="fill"
                         sizes="672px"
-
                     />
                 </Inner>
             </Container>
             <Buttons>
-                {[0, 1, 2].map((dot) => (
+                {[0, 1, 2].map((dot, i) => (
                     <BtnDiv
                         key={Math.random()}
                         onClick={() => ClickHandler(dot)}

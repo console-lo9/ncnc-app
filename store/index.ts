@@ -65,11 +65,26 @@ const categoryIdSlice = createSlice({
     },
 });
 
+export interface MyPageTypes {
+    mypage: boolean;
+}
+const mypageInitialState: MyPageTypes = { mypage: false };
+const mypageSlice = createSlice({
+    name: 'mypage',
+    initialState: mypageInitialState,
+    reducers: {
+        mypage(state, action) {
+            state.mypage = action.payload;
+        },
+    },
+});
+
 const rootReducer = combineReducers({
     option: optionSlice.reducer,
     fetch: fetchDataSlice.reducer,
     brand: selectBrandSlice.reducer,
     category: categoryIdSlice.reducer,
+    mypage: mypageSlice.reducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -81,6 +96,7 @@ const makeStore = () =>
             brand: selectBrandSlice.reducer,
             option: optionSlice.reducer,
             category: categoryIdSlice.reducer,
+            mypage: mypageSlice.reducer,
         },
     });
 
@@ -88,6 +104,7 @@ export const optionActions = optionSlice.actions;
 export const fetchDataActions = fetchDataSlice.actions;
 export const selectBrandActions = selectBrandSlice.actions;
 export const getCategoryIdActions = categoryIdSlice.actions;
+export const mypageActions = mypageSlice.actions;
 
 export const wrapper = createWrapper(makeStore, {
     debug: process.env.NODE_ENV !== 'production',
