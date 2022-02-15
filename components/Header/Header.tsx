@@ -35,7 +35,9 @@ const Header = ({ title }: HeaderProps) => {
             {title ? (
                 <>
                     <IconWrap>
-                        <Image src={back} alt="menu" />
+                        <button>
+                            <Image src={back} alt="menu" />
+                        </button>
                     </IconWrap>
                     <p>{title}</p>
                 </>

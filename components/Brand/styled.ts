@@ -34,7 +34,7 @@ export const ItemImage = styled.img`
 export const DiscountRate = styled.span`
     color: #f75656;
     font-size: 16px;
-    magin-right: 10px;
+    margin-right: 10px;
 `;
 
 export const SellingPrice = styled.span`

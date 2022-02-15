@@ -27,7 +27,7 @@ const Category = ({
     };
 
     return (
-        <>
+        <CategoryContainer>
             <CategoryNav categoryList={categoryList} id={id} />
             <ItemsHolder>
                 <SectionWrapper>
@@ -56,9 +56,15 @@ const Category = ({
                         )}
                 </SectionWrapper>
             </ItemsHolder>
-        </>
+        </CategoryContainer>
     );
 };
+
+const CategoryContainer = styled.div`
+    display: flex;
+    margin-top: 59px;
+    flex-direction: column;
+`;
 
 export const SectionWrapper = styled.div`
     display: grid;
@@ -66,7 +72,7 @@ export const SectionWrapper = styled.div`
     padding: 20px;
     background-color: rgb(238, 238, 238);
     margin-top: 40px;
-    overflow: scroll;
+    overflow: auto;
 `;
 
 const SectionDiv = styled.div`

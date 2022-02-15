@@ -5,12 +5,15 @@ import Image from 'next/image';
 import back from '/assets/Back.png';
 
 const Wrapper = styled.nav`
-    width: 375px;
-    height: 50px;
+    width: 100%;
+    max-width: 672px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     background-color: #ffffff;
+    top: 0px;
+    position: fixed;
+    height: 59px;
     p {
         font-weight: 600;
         font-size: 15px;
@@ -24,6 +27,8 @@ const IconWrap = styled.button`
     padding: 7px;
     margin-left: 6px;
 `;
+
+// const navigate = useNavigate();
 
 const Header = ({ name }: { name: string }): JSX.Element => {
     return (
@@ -47,12 +52,6 @@ const Header = ({ name }: { name: string }): JSX.Element => {
     );
 };
 
-const HeaderBox = styled.header`
-    top: 0px;
-    position: fixed;
-    background-color: #fff;
-    height: 59px;
-    display: flex;
-`;
+const HeaderBox = styled.header``;
 
 export default Header;
