@@ -6,6 +6,8 @@ import axios from 'axios';
 import Deal from 'components/Deal/Deal';
 import { DealItemProps } from 'components/Deal/types';
 
+import Carousel from 'components/Carousel/Carousel';
+
 interface HomeProps {
     conItems: DealItemProps[];
 }
@@ -22,6 +24,7 @@ const Home: NextPage<HomeProps> = ({ conItems }) => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <Carousel />
             <Deal onDealItems={conItems} />
         </div>
     );
