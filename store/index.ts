@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import { combineReducers, configureStore, createSlice } from '@reduxjs/toolkit';
-import { createWrapper } from 'next-redux-wrapper';
-=======
 import {
     combineReducers,
     configureStore,
@@ -25,7 +21,6 @@ const optionSlice = createSlice({
         },
     },
 });
->>>>>>> 9fff0eda417fbe1e8def62e86373a7da97d77045
 
 const fetchInitialState = {
     fetchData: [],
@@ -68,11 +63,8 @@ const makeStore = () =>
     configureStore({
         reducer: {
             fetch: fetchDataSlice.reducer,
-<<<<<<< HEAD
             brand: selectBrandSlice.reducer,
-=======
             option: optionSlice.reducer,
->>>>>>> 9fff0eda417fbe1e8def62e86373a7da97d77045
         },
     });
 
