@@ -189,9 +189,14 @@ $ npm run dev || yarn dev
 
 ## 🗺 한 눈으로 보는 구현 기능
 
+<img width="400" src="https://user-images.githubusercontent.com/28384562/154145083-d5024c30-dbec-4626-a3c1-22a14b8ef00a.gif" />
+<img width="400" src="https://user-images.githubusercontent.com/28384562/154145176-07ec7cde-020b-4139-9335-65d47a4664e8.gif" />
+
 ## 💡 과제 후기
 
 ### **우종원** 🍀
+
+트랜디한 React 개발자라면 관심을 가질 TypeScript와 Next.js의 조합으로 멋진 프로젝트를 완성시킬 수 있어 좋았습니다. 특히, 빈번한 API호출과 JSON파일 렌더링을 고민해보면서 앞으로 이 부분에 있어서는 더 자신있게 구현할 수 있을 것 같습니다.
 
 ### **박중섭** ✨
 
