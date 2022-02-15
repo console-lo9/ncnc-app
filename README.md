@@ -30,7 +30,7 @@ alt=""
 </td>
 <td><b><a href="https://github.com/Ubermensch0608"
 >우종원</a></b></sub></td>
-<td></td>
+<td>브랜드 페이지, 전반적 리팩토링</td>
 </tr>
 
 <tr>
@@ -43,7 +43,7 @@ alt=""
 </td>
 <td><b><a href="https://github.com/crucial-sub"
 >박중섭</a></b>
-<td></td>
+<td>카테고리 페이지, 배포</td>
 </tr>
 
 <tr>
@@ -54,7 +54,7 @@ width="100px;"
 alt=""
 /></td>
 <td><a href="https://github.com/ttaerrim" >이태림</a></td>
-<td></td>
+<td>상품 상세 페이지, 마이페이지, 고객센터 </td>
 </tr>
 
 <tr>
@@ -66,14 +66,14 @@ alt=""
 /><br /></td>
 <td><b><a href="https://github.com/penguin311"
 >임수영</a></b></td>
-<td></td>
+<td>메인 페이지, 헤더</td>
 </tr>
 </tbody>
 </table>
 
 ## 🚀 스택
 
-`React` `typescript` `Next.js`
+`React` `typescript` `Next.js` `emotion`
 
 ## ⚙ 설치
 
@@ -108,38 +108,41 @@ $ npm run dev || yarn dev
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.6"
-}
+},
 ```
 
 ## 📂 파일 구조
 
-    ├── public
-    ├── server
-    └── src
-        ├── assets
         ├── components
-        │   ├── Header
-        │   ├── Login
-        │   ├── Messages
-        │   ├── Modal
-        │   ├── NewMessage
-        │   └── SideNav
+        │   ├── Brand
+        │   ├── Carousel
+        │   ├── Category
+        │   ├── Contact
+        │   ├── Deal
+        │   ├── ItemLists
+        │   │   ├── styled
+        │   │   └── types
+        │   ├── Main
+        │   └── Mypage
+        ├── cypress
+        │   ├── fixtures
+        │   ├── integration
+        │   ├── plugins
+        │   └── support
         ├── hooks
         ├── layout
-        ├── models
         ├── pages
+        │   ├── api
+        │   ├── brands
+        │   ├── categories
+        │   ├── contacts
+        │   └── items
+        ├── public
         ├── store
-        │   ├── action
-        │   └── reducer
+        ├── styles
+        ├── types
         └── utils
-        │   └── constants
-        ├── App.js
-        ├── GlobalStyle.js
-        └── index.js
-
-> 작성 후 삭제 참고 (https://www.lesstif.com/lpt/linux-tree-54952142.html)
->
-> $ tree -N -L 2 -d -I "node_modules" 또는 vscode File-tree-generator extension 사용
+            └── functions
 
 ## ✨ 구현 사항
 
@@ -189,7 +192,12 @@ $ npm run dev || yarn dev
 
 ## 🗺 한 눈으로 보는 구현 기능
 
+1. 메인 및 카테고리, 브랜드, 상품 상세 페이지
+
 <img width="400" src="https://user-images.githubusercontent.com/28384562/154145083-d5024c30-dbec-4626-a3c1-22a14b8ef00a.gif" />
+
+2. 마이페이지와 고객 센터
+
 <img width="400" src="https://user-images.githubusercontent.com/28384562/154145176-07ec7cde-020b-4139-9335-65d47a4664e8.gif" />
 
 ## 💡 과제 후기
@@ -201,6 +209,8 @@ $ npm run dev || yarn dev
 ### **박중섭** ✨
 
 ### **이태림** 🐯
+
+검색 노출, 라우터 등 React의 불편한 점을 개선시킬 수 있는 Next.js를 처음 사용한 프로젝트였기 때문에 의미 있었습니다. Typescript 또한 런타임 전에 에러를 잡을 수 있는 등 Javascript의 한계를 잡아 줄 수 있기 때문에 깊이 공부하면 도움이 될 것이라 생각합니다. SSR, CSR에 대해 더 자세히 공부해 보고 싶습니다.
 
 ### **임수영** 🐧
 
