@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import { useEffect, useState } from 'react';
 import { Option } from 'types/itemTypes';
 import OptionList from './OptionList';
@@ -8,6 +8,23 @@ import { optionActions, RootState } from 'store';
 import Image from 'next/image';
 import pencil from 'assets/pencil.svg';
 import closeButton from 'assets/closeButton.svg';
+
+const slideUp = keyframes`
+  from {
+    transform: translateY(200px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+`;
+const slideDown = keyframes`
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(200px);
+  }
+`;
 
 const OptionContainer = styled.div`
     position: relative;
@@ -24,13 +41,32 @@ const OptionSection = styled.section<{ isOpen: boolean }>`
     ${({ isOpen }) => {
         if (!isOpen) {
             return css`
+                animation-name: ${slideDown};
                 display: none;
             `;
         }
     }}
+    animation-duration: 150ms;
+    animation-timing-function: ease-out;
+    animation-name: ${slideUp};
+    animation-fill-mode: forwards;
 `;
-const ButtonSection = styled(OptionSection)`
+
+const ButtonSection = styled.section<{ isOpen: boolean }>`
+    display: flex;
     flex-direction: row;
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+    max-width: 672px;
+    border-top: 1px solid rgb(204, 204, 204);
+    ${({ isOpen }) => {
+        if (!isOpen) {
+            return css`
+                display: none;
+            `;
+        }
+    }}
     background-color: white;
 `;
 const OptionTitle = styled.div`
