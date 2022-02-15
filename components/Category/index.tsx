@@ -31,7 +31,9 @@ const Category = ({
             <CategoryNav categoryList={categoryList} id={id} />
             <ItemsHolder>
                 <SectionWrapper>
-                    {categories &&
+                    {id === 1 && categories ? (
+                        <h3></h3>
+                    ) : (
                         categories!.conCategory2s.map(
                             (category: conCategory2s, i: number) => (
                                 <Section key={`category-${i}`}>
@@ -53,7 +55,8 @@ const Category = ({
                                     </SectionDiv>
                                 </Section>
                             ),
-                        )}
+                        )
+                    )}
                 </SectionWrapper>
             </ItemsHolder>
         </CategoryContainer>

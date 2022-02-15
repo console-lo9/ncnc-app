@@ -10,8 +10,6 @@ const ContentsWrapper = styled.main`
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* overflow: auto; */
-    /* width: 100%; */
 `;
 
 export default ContentsBox;
