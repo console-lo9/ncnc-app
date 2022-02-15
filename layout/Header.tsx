@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import iconMenu from '/assets/menu.png';
 import Image from 'next/image';
 import back from '/assets/Back.png';
+import { useRouter } from 'next/router';
 
 const Wrapper = styled.nav`
     width: 100%;
@@ -40,12 +41,15 @@ const Text = styled.div`
 `;
 
 const Header = ({ name }: { name: string }): JSX.Element => {
+    const router = useRouter();
     return (
         <Wrapper className={name === ' ' ? 'detail' : ''}>
             {name ? (
                 <>
                     <IconWrap>
-                        <Image src={back} alt="menu" />
+                        <button onClick={() => router.back()}>
+                            <Image src={back} alt="menu" />
+                        </button>
                     </IconWrap>
                     <Text>
                         <p>{name}</p>
