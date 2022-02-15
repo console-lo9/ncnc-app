@@ -10,7 +10,7 @@ const Deal: React.FC<{ onDealItems: DealItemProps[] }> = ({ onDealItems }) => {
     return (
         <DealContainer>
             <ItemsHolder>
-                {onDealItems.map((item) => (
+                {onDealItems?.map((item) => (
                     <li key={item.id}>
                         <Link href={`/items/${item.id}`}>
                             <Styled.ItemInfoWrapper>

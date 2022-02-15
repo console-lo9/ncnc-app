@@ -17,9 +17,6 @@ interface HomeProps {
     conItems: DealItemProps[];
 }
 const Home: NextPage<HomeProps> = ({ conItems }) => {
-    const conCategory1s =
-        useAxios<CategoryListType>('/con-category1s')?.conCategory1s;
-
     useAxios('/con-items/soon');
 
     return (

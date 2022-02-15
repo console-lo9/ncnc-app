@@ -4,6 +4,8 @@ import iconMenu from '/assets/menu.png';
 import Image from 'next/image';
 import back from '/assets/Back.png';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { mypageActions } from 'store';
 
 const Wrapper = styled.nav`
     width: 100%;
@@ -42,6 +44,10 @@ const Text = styled.div`
 
 const Header = ({ name }: { name: string }): JSX.Element => {
     const router = useRouter();
+    const dispatch = useDispatch();
+    const openHandler = () => {
+        dispatch(mypageActions.mypage(true));
+    };
     return (
         <Wrapper className={name === ' ' ? 'detail' : ''}>
             {name ? (
@@ -57,7 +63,7 @@ const Header = ({ name }: { name: string }): JSX.Element => {
                 </>
             ) : (
                 <>
-                    <IconWrap>
+                    <IconWrap onClick={openHandler}>
                         <Image src={iconMenu} alt="menu" />
                     </IconWrap>
                     <Text>
