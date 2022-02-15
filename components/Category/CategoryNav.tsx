@@ -1,10 +1,9 @@
-import styled from '@emotion/styled';
-import useAxios from 'hooks/useAxios';
+import React, { useRef, useState } from 'react';
+
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React, { useEffect, useRef, useState } from 'react';
-import { CategoryListType, conCategory1s } from 'types/categoryListTypes';
-import { fetcher } from 'utils/fetcher';
+import { conCategory1s } from 'types/categoryListTypes';
+
+import styled from '@emotion/styled';
 
 const CategoryNav = ({
     categoryList,

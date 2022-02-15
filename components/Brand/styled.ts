@@ -1,12 +1,15 @@
 import styled from '@emotion/styled';
 
-export const ItemsHolder = styled.ul``;
+export const ItemsHolder = styled.ul`
+    height: 100%;
+    background: rgb(238, 238, 238);
+`;
 
 export const ItemInfoWrapper = styled.div`
     display: flex;
     padding: 20px 0 20px 30px;
     border-top: 1px solid #eee;
-    background-color: rgb(238, 238, 238);
+    background-color: #fff;
 `;
 
 export const InfoLeft = styled.div``;

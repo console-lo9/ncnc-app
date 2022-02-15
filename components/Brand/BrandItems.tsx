@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import React from 'react';
 import { ConItems } from 'types/items';
+
 import * as Styled from './styled';
 
 export interface BrandItemsProp {
@@ -23,7 +23,7 @@ const BrandItems2: React.FC<BrandItemsProp> = ({ conItems }) => {
                                 </Styled.SellingPrice>
                                 <Styled.InfoBottom>
                                     <Styled.DiscountRate>
-                                        {Math.ceil(
+                                        {Math.round(
                                             100 *
                                                 (1 -
                                                     item.minSellingPrice /
