@@ -51,10 +51,25 @@ const selectBrandSlice = createSlice({
     },
 });
 
+export interface CategoryTypes {
+    categoryId: number | null;
+}
+const categoryInitialState: CategoryTypes = { categoryId: null };
+const categoryIdSlice = createSlice({
+    name: 'category',
+    initialState: categoryInitialState,
+    reducers: {
+        category(state, action) {
+            state.categoryId = action.payload;
+        },
+    },
+});
+
 const rootReducer = combineReducers({
     option: optionSlice.reducer,
     fetch: fetchDataSlice.reducer,
     brand: selectBrandSlice.reducer,
+    category: categoryIdSlice.reducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -65,12 +80,14 @@ const makeStore = () =>
             fetch: fetchDataSlice.reducer,
             brand: selectBrandSlice.reducer,
             option: optionSlice.reducer,
+            category: categoryIdSlice.reducer,
         },
     });
 
 export const optionActions = optionSlice.actions;
 export const fetchDataActions = fetchDataSlice.actions;
 export const selectBrandActions = selectBrandSlice.actions;
+export const getCategoryIdActions = categoryIdSlice.actions;
 
 export const wrapper = createWrapper(makeStore, {
     debug: process.env.NODE_ENV !== 'production',

@@ -11,19 +11,21 @@ import { RootState } from 'store';
 //  brands
 
 const BrandId = () => {
+    const [category, setCategory] = useState<conItems[]>([]);
     const brandId = useSelector(
         (state: RootState) => state.brand.selectedBrand,
     );
-    const [category, setCategory] = useState<conItems[]>([]);
+    const categoryId = useSelector(
+        (state: RootState) => state.category.categoryId,
+    );
 
     useEffect(() => {
         const getCategories = async () => {
-            const fetchUrl = `con-category1s/${61}/nested`;
+            const fetchUrl = `con-category1s/${categoryId}/nested`;
             const { conCategory1 } = await fetcher(fetchUrl);
             const conCategory2 = await conCategory1.conCategory2s;
             const conItems = conCategory2[brandId].conItems;
 
-            console.log(conItems);
             setCategory(conItems);
         };
         getCategories();
