@@ -1,17 +1,16 @@
 import { reset } from 'styles/globalStyles';
 import { Global } from '@emotion/react';
 import type { AppProps } from 'next/app';
+import { wrapper } from 'store';
 import Container from 'layout/Container';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     return (
-        <>
-            <Container>
-                <Global styles={reset} />
-                <Component {...pageProps} />
-            </Container>
-        </>
+        <Container>
+            <Global styles={reset} />
+            <Component {...pageProps} />
+        </Container>
     );
-}
+};
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
