@@ -2,10 +2,25 @@ import {
     combineReducers,
     configureStore,
     createSlice,
-    Store,
+    PayloadAction,
 } from '@reduxjs/toolkit';
-import { Context, createWrapper, HYDRATE } from 'next-redux-wrapper';
-import { BrandType, ConItems } from 'types/items';
+import { createWrapper } from 'next-redux-wrapper';
+
+interface OptionReducer {
+    isOpen: boolean;
+}
+const optionInitialState: OptionReducer = {
+    isOpen: false,
+};
+const optionSlice = createSlice({
+    name: 'option',
+    initialState: optionInitialState,
+    reducers: {
+        changeOpenState(state, action: PayloadAction<boolean>) {
+            state.isOpen = action.payload;
+        },
+    },
+});
 
 const fetchInitialState = {
     fetchData: [],
@@ -22,6 +37,7 @@ const fetchDataSlice = createSlice({
 });
 
 const rootReducer = combineReducers({
+    option: optionSlice.reducer,
     fetch: fetchDataSlice.reducer,
 });
 
@@ -29,9 +45,13 @@ export type RootState = ReturnType<typeof rootReducer>;
 
 const makeStore = () =>
     configureStore({
-        reducer: { fetch: fetchDataSlice.reducer },
+        reducer: {
+            fetch: fetchDataSlice.reducer,
+            option: optionSlice.reducer,
+        },
     });
 
+export const optionActions = optionSlice.actions;
 export const fetchDataActions = fetchDataSlice.actions;
 
 export const wrapper = createWrapper(makeStore, {
