@@ -25,9 +25,17 @@ const OptionButton = ({
             dispatch(optionActions.changeOpenState(true));
         }
     };
+
+    const orderHandler = () => {
+        if (!optionState.isOpen) {
+            alert('구매가 성공적으로 완료되었습니다!');
+        }
+    };
+
     const closeHandler = () => {
         dispatch(optionActions.changeOpenState(false));
         setSelectedOption('');
+        console.log('close');
     };
     return (
         <Styled.OptionContainer>
@@ -68,7 +76,7 @@ const OptionButton = ({
             ) : (
                 <Styled.OptionBtn
                     disabled={optionState.isOpen}
-                    onClick={optionHandler}
+                    onClick={orderHandler}
                 >
                     구매하기
                 </Styled.OptionBtn>
