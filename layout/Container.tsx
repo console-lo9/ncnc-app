@@ -18,5 +18,5 @@ const Wrapper = styled.div`
 
     margin: 0 auto;
     background-color: #fff;
-    overflow: scroll;
+    overflow-y: auto;
 `;
