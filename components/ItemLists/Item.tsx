@@ -5,6 +5,7 @@ import ItemInfo from './ItemInfo';
 import ItemDesc from './ItemDesc';
 import OptionButton from './OptionButton';
 import { ConItem, ItemType, Option } from 'types/itemTypes';
+import styled from '@emotion/styled';
 
 const Item = ({ conItemId }: { conItemId: number }): JSX.Element => {
     const item = useAxios<ItemType>(`/con-items/${conItemId}`);
@@ -18,7 +19,7 @@ const Item = ({ conItemId }: { conItemId: number }): JSX.Element => {
     }, [item]);
     if (!conItem || !options) return <div>로딩중</div>;
     return (
-        <Fragment>
+        <TestWrapper>
             <ItemInfo conItem={conItem} />
             <ItemDesc conItem={conItem} />
 
@@ -26,7 +27,11 @@ const Item = ({ conItemId }: { conItemId: number }): JSX.Element => {
                 options={options}
                 originalPrice={conItem.originalPrice}
             />
-        </Fragment>
+        </TestWrapper>
     );
 };
+
+export const TestWrapper = styled.div`
+    background-color: #fff;
+`;
 export default Item;

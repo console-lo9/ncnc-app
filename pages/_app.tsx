@@ -18,14 +18,13 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     const category = splitRouter[1];
     const id = Number(splitRouter[2]);
 
-    console.log('router:', router.asPath);
+    const contactsTitle = title.replace('/', '');
+
     let name: string = '';
 
     useEffect(() => {
         if (id) {
             const getCategories = async () => {
-                console.log('category:', category);
-                console.log('id:', id);
                 if (category === 'categories') {
                     const fetchUrl = `con-category1s/${id}/nested`;
                     const { conCategory1 } = await fetcher(fetchUrl);
@@ -34,6 +33,8 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
                     const fetchUrl = `con-category2s/${id}`;
                     const { conCategory2 } = await fetcher(fetchUrl);
                     name = conCategory2.name;
+                } else if (contactsTitle === 'contacts') {
+                    name = '고객센터';
                 } else {
                     name = ' ';
                 }

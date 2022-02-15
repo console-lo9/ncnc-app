@@ -14,6 +14,10 @@ const Wrapper = styled.nav`
     top: 0px;
     position: fixed;
     height: 59px;
+    z-index: 50;
+    &.detail {
+        border-bottom: 1px solid rgb(221, 221, 221);
+    }
     p {
         font-weight: 600;
         font-size: 15px;
@@ -35,11 +39,9 @@ const Text = styled.div`
     justify-content: space-around;
 `;
 
-// const navigate = useNavigate();
-
 const Header = ({ name }: { name: string }): JSX.Element => {
     return (
-        <Wrapper>
+        <Wrapper className={name === ' ' ? 'detail' : ''}>
             {name ? (
                 <>
                     <IconWrap>

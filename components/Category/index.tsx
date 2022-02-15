@@ -77,7 +77,11 @@ const CategoryContainer = styled.div`
     flex-direction: column;
 `;
 
-const DealBox = styled.div``;
+const DealBox = styled.div`
+    & > ul {
+        margin-top: 5px;
+    }
+`;
 
 export const SectionWrapper = styled.div`
     display: grid;

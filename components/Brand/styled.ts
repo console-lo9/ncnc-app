@@ -1,9 +1,18 @@
 import styled from '@emotion/styled';
 
+export const CountItem = styled.div`
+    margin-top: 59px;
+    padding: 12px 0 11px 17px;
+    background-color: #ffffff;
+    & ~ ul {
+        margin-top: 5px;
+    }
+`;
+
 export const ItemsHolder = styled.ul`
     height: 100%;
     background: rgb(238, 238, 238);
-    margin-top: 60px;
+    margin-top: 59px;
 `;
 
 export const ItemInfoWrapper = styled.div`
