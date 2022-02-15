@@ -52,8 +52,8 @@ const Category = (): JSX.Element => {
 const TitleDiv = styled.div`
     display: flex;
     width: 100%;
-    padding-left: 20px;
-    margin: 14px 0;
+    margin-bottom: 14px;
+    margin-top: 30px;
 `;
 const WarnDiv = styled.div`
     font-size: 14px;
