@@ -6,6 +6,7 @@ export const reset = css`
         margin: 0;
         padding: 0;
         font-family: 'Noto Sans KR', sans-serif;
+        -ms-overflow-style: none;
     }
     a {
         text-decoration: none;
@@ -62,7 +63,6 @@ export const reset = css`
         height: 100%;
     }
 
-    -ms-overflow-style: none;
     &::-webkit-scrollbar {
         display: none;
     }

@@ -10,41 +10,6 @@ import { ItemsHolder } from 'components/Brand/styled';
 import { conCategory1, conCategory2s } from 'types/categoryTypes';
 import { conCategory1s } from 'types/categoryListTypes';
 
-// const Category = ({ id }: { id: number }): JSX.Element => {
-//     const conCategory = useAxios<CategoryType>(`con-category1s/${id}/nested`);
-//     const conCategoryList = useAxios<CategoryListType>(`con-category1s`);
-//     const [brandList, setBrandList] = useState<conCategory1>();
-//     const [categoryList, setCategoryList] = useState<conCategory1s[]>([]);
-//     useEffect(() => {
-//         if (conCategory) {
-//             setBrandList(conCategory.conCategory1);
-//         }
-//         if (conCategoryList) {
-//             setCategoryList(conCategoryList.conCategory1s);
-//         }
-//     }, [conCategory, conCategoryList]);
-//     if (!brandList || !categoryList) return <div>로딩중</div>;
-//     return (
-//         <>
-//             <CategoryNav categoryList={categoryList} />
-//             <SectionWrapper>
-//                 {brandList.conCategory2s.map(
-//                     (brand: conCategory2s, i: number) => (
-//                         <Section key={`category-${i}`}>
-//                             <Link href={`/brands/${brand.id}`}>
-//                                 <a>
-//                                     <h3>{brand.name}</h3>
-//                                     <img src={brand.imageUrl} alt="logo" />
-//                                 </a>
-//                             </Link>
-//                         </Section>
-//                     ),
-//                 )}
-//             </SectionWrapper>
-//         </>
-//     );
-// };
-
 const Category = ({
     categories,
     categoryList,

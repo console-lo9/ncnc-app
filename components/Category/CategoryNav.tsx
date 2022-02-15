@@ -12,26 +12,6 @@ const CategoryNav = ({
     categoryList: conCategory1s[];
     id: number;
 }): JSX.Element => {
-    // const conCategoryList = useAxios<CategoryListType>(`con-category1s`);
-    // useEffect(() => {
-    //     if (conCategoryList) {
-    //         setCategoryList(conCategoryList.conCategory1s);
-    //     }
-    // }, [conCategoryList]);
-    // const router = useRouter();
-    // const { id } = router.query;
-    // const [categoryList, setCategoryList] = useState<conCategory1s[]>([]);
-    // useEffect(() => {
-    //     const getCategoryList = async () => {
-    //         const fetchUrl = `con-category1s`;
-    //         const { conCategory1s } = await fetcher(fetchUrl);
-    //         setCategoryList(conCategory1s);
-    //     };
-    //     getCategoryList();
-    //     return;
-    // }, [categoryList]);
-    // if (!categoryList) return <div>로딩중</div>;
-
     const slider = useRef<HTMLDivElement>(null);
     const [isDown, setIsDown] = useState(false);
     const [startX, setStartX] = useState(0);
@@ -136,7 +116,6 @@ const CategoryNavA = styled.a`
 
 const CategoryNavItem = styled.div`
     display: flex;
-    /* height: 100%; */
     align-items: center;
     justify-content: center;
 `;

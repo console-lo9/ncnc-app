@@ -1,10 +1,8 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import iconMenu from '/assets/menu.png';
 import Image from 'next/image';
 import back from '/assets/Back.png';
-import { fetcher } from 'utils/fetcher';
 
 const Wrapper = styled.nav`
     width: 375px;
@@ -26,11 +24,6 @@ const IconWrap = styled.button`
     padding: 7px;
     margin-left: 6px;
 `;
-
-interface HeaderProps {
-    title: string;
-    name: string;
-}
 
 const Header = ({ name }: { name: string }): JSX.Element => {
     return (
