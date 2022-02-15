@@ -19,18 +19,18 @@ const ItemList: React.FC<{
         dispatch(selectBrandActions.brand(selectBrand));
     };
 
+    const fetchData = async () => {
+        const { data }: any = await axios.get(
+            `https://api2.ncnc.app/con-category1s/${conCategoryId}/nested`,
+        );
+
+        const conCategory1 = await data.conCategory1;
+        const brandItems = await conCategory1.conCategory2s;
+
+        setBrandItems(brandItems);
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            const { data }: any = await axios.get(
-                `https://api2.ncnc.app/con-category1s/${conCategoryId}/nested`,
-            );
-
-            const conCategory1 = await data.conCategory1;
-            const brandItems = await conCategory1.conCategory2s;
-
-            setBrandItems(brandItems);
-        };
-
         fetchData();
     }, []);
 

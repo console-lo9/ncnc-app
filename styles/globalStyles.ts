@@ -51,7 +51,7 @@ export const reset = css`
         font-family: apple sd gothic neo, sans-srif;
         font-size: 14px;
         margin: 0;
-        background-color: #fff;
+        background-color: #ddd;
         color: #222;
         height: 100vh;
     }

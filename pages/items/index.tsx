@@ -1,9 +1,7 @@
-import ItemList from 'components/ItemLists/ItemList';
+import React from 'react';
 
-const Items = () => {
-    // 67 => 까페
-
-    return <ItemList conCategoryId={67} />;
+const Brand = () => {
+    return <div>카테고리 별로 브랜드 선택</div>;
 };
 
-export default Items;
+export default Brand;

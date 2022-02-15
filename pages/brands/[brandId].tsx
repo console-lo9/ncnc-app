@@ -7,7 +7,7 @@ const BrandId = () => {
     const router = useRouter();
     const brandId = Number(router.query.brandId);
 
-    return <BrandItems conCategoryId={67} brandId={brandId} />;
+    return <BrandItems conCategoryId={61} brandId={brandId} />;
 };
 
 export default BrandId;
