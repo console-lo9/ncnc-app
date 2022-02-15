@@ -6,12 +6,12 @@ const ContentsBox: React.FC = ({ children }) => {
 };
 
 const ContentsWrapper = styled.main`
-    margin-top: 59px;
     background-color: rgb(238, 238, 238);
     height: 100%;
     display: flex;
     flex-direction: column;
-    overflow: auto;
+    /* overflow: auto; */
+    /* width: 100%; */
 `;
 
 export default ContentsBox;

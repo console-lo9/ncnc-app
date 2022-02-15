@@ -59,8 +59,8 @@ export const reset = css`
         color: #222;
         height: 100vh;
     }
-    #root {
-        height: 100%;
+    #__next {
+        height: 100vh;
     }
 
     &::-webkit-scrollbar {

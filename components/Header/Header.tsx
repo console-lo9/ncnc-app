@@ -19,9 +19,8 @@ const Wrapper = styled.nav`
 `;
 
 const IconWrap = styled.button`
-    width: 30px;
-    height: 30px;
-    padding: 7px;
+    width: 50px;
+    height: 50px;
     margin-left: 6px;
 `;
 
@@ -35,7 +34,9 @@ const Header = ({ title }: HeaderProps) => {
             {title ? (
                 <>
                     <IconWrap>
-                        <Image src={back} alt="menu" />
+                        <button>
+                            <Image src={back} alt="menu" />
+                        </button>
                     </IconWrap>
                     <p>{title}</p>
                 </>

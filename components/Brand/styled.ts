@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const ItemsHolder = styled.ul`
     height: 100%;
     background: rgb(238, 238, 238);
+    margin-top: 60px;
 `;
 
 export const ItemInfoWrapper = styled.div`
@@ -34,7 +35,7 @@ export const ItemImage = styled.img`
 export const DiscountRate = styled.span`
     color: #f75656;
     font-size: 16px;
-    magin-right: 10px;
+    margin-right: 10px;
 `;
 
 export const SellingPrice = styled.span`
