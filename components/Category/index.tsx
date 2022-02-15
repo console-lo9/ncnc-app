@@ -9,50 +9,21 @@ import CategoryNav from './CategoryNav';
 import { ItemsHolder } from 'components/Brand/styled';
 import { conCategory1, conCategory2s } from 'types/categoryTypes';
 import { conCategory1s } from 'types/categoryListTypes';
-
-// const Category = ({ id }: { id: number }): JSX.Element => {
-//     const conCategory = useAxios<CategoryType>(`con-category1s/${id}/nested`);
-//     const conCategoryList = useAxios<CategoryListType>(`con-category1s`);
-//     const [brandList, setBrandList] = useState<conCategory1>();
-//     const [categoryList, setCategoryList] = useState<conCategory1s[]>([]);
-//     useEffect(() => {
-//         if (conCategory) {
-//             setBrandList(conCategory.conCategory1);
-//         }
-//         if (conCategoryList) {
-//             setCategoryList(conCategoryList.conCategory1s);
-//         }
-//     }, [conCategory, conCategoryList]);
-//     if (!brandList || !categoryList) return <div>로딩중</div>;
-//     return (
-//         <>
-//             <CategoryNav categoryList={categoryList} />
-//             <SectionWrapper>
-//                 {brandList.conCategory2s.map(
-//                     (brand: conCategory2s, i: number) => (
-//                         <Section key={`category-${i}`}>
-//                             <Link href={`/brands/${brand.id}`}>
-//                                 <a>
-//                                     <h3>{brand.name}</h3>
-//                                     <img src={brand.imageUrl} alt="logo" />
-//                                 </a>
-//                             </Link>
-//                         </Section>
-//                     ),
-//                 )}
-//             </SectionWrapper>
-//         </>
-//     );
-// };
+import Deal from 'components/Deal/Deal';
+import { useEffect } from 'react';
+import { fetcher } from 'utils/fetcher';
+import { DealItemProps } from 'components/Deal/types';
 
 const Category = ({
     categories,
     categoryList,
     id,
+    conItems,
 }: {
     categories: conCategory1 | null;
     categoryList: conCategory1s[];
     id: number;
+    conItems: DealItemProps[];
 }): JSX.Element => {
     const dispatch = useDispatch();
     const getBrandHandler = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -62,12 +33,16 @@ const Category = ({
     };
 
     return (
-        <>
+        <CategoryContainer>
             <CategoryNav categoryList={categoryList} id={id} />
             <ItemsHolder>
-                <SectionWrapper>
-                    {categories &&
-                        categories!.conCategory2s.map(
+                {id === 1 && categories ? (
+                    <DealBox>
+                        <Deal onDealItems={conItems} />
+                    </DealBox>
+                ) : (
+                    <SectionWrapper>
+                        {categories!.conCategory2s.map(
                             (category: conCategory2s, i: number) => (
                                 <Section key={`category-${i}`}>
                                     <SectionDiv>
@@ -76,30 +51,46 @@ const Category = ({
                                                 id={i.toString()}
                                                 onClick={getBrandHandler}
                                             >
-                                                <BrandImg
-                                                    src={category.imageUrl}
-                                                    alt="logo"
-                                                />
-                                                <BrandName>
-                                                    {category.name}
-                                                </BrandName>
+                                                <GrowDiv>
+                                                    <BrandImg
+                                                        src={category.imageUrl}
+                                                        alt="logo"
+                                                    />
+                                                    <BrandName>
+                                                        {category.name}
+                                                    </BrandName>
+                                                </GrowDiv>
                                             </SectionA>
                                         </Link>
                                     </SectionDiv>
                                 </Section>
                             ),
                         )}
-                </SectionWrapper>
+                    </SectionWrapper>
+                )}
             </ItemsHolder>
-        </>
+        </CategoryContainer>
     );
 };
+
+const CategoryContainer = styled.div`
+    display: flex;
+    margin-top: 59px;
+    flex-direction: column;
+`;
+
+const DealBox = styled.div`
+    & > ul {
+        margin-top: 5px;
+    }
+`;
 
 export const SectionWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 20px;
-    background: rgb(238, 238, 238);
+    background-color: rgb(238, 238, 238);
+    overflow: auto;
 `;
 
 const SectionDiv = styled.div`
@@ -109,6 +100,14 @@ const SectionDiv = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 0.5rem;
+`;
+const GrowDiv = styled.div`
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
+    &:hover {
+        -webkit-transform: scale(1.05);
+    }
 `;
 
 const SectionA = styled.a`

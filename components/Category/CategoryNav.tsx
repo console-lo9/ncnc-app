@@ -12,26 +12,6 @@ const CategoryNav = ({
     categoryList: conCategory1s[];
     id: number;
 }): JSX.Element => {
-    // const conCategoryList = useAxios<CategoryListType>(`con-category1s`);
-    // useEffect(() => {
-    //     if (conCategoryList) {
-    //         setCategoryList(conCategoryList.conCategory1s);
-    //     }
-    // }, [conCategoryList]);
-    // const router = useRouter();
-    // const { id } = router.query;
-    // const [categoryList, setCategoryList] = useState<conCategory1s[]>([]);
-    // useEffect(() => {
-    //     const getCategoryList = async () => {
-    //         const fetchUrl = `con-category1s`;
-    //         const { conCategory1s } = await fetcher(fetchUrl);
-    //         setCategoryList(conCategory1s);
-    //     };
-    //     getCategoryList();
-    //     return;
-    // }, [categoryList]);
-    // if (!categoryList) return <div>로딩중</div>;
-
     const slider = useRef<HTMLDivElement>(null);
     const [isDown, setIsDown] = useState(false);
     const [startX, setStartX] = useState(0);
@@ -98,22 +78,17 @@ const CategoryNavBar = styled.nav`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* position: fixed; */
+    position: fixed;
     max-width: 48rem;
+    background-color: #fff;
+    z-index: 49;
 `;
 const CategoryNavBox = styled.div`
-    height: 100%;
     width: 100%;
-    height: 41px;
+    height: 55px;
     display: flex;
     overflow-x: scroll;
-    overflow-y: hidden;
     white-space: nowrap;
-    transition: all 0.2s;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-        display: none;
-    }
     font-size: 16px;
 `;
 
@@ -121,16 +96,13 @@ const CategoryNavSlider = styled.div`
     padding: 0px 10px;
     border-bottom: 1px solid #ccc;
     white-space: nowrap;
-    &::-webkit-scrollbar {
-        display: none;
-    }
     font-size: 16px;
 `;
 
 const CategoryNavA = styled.a`
     display: inline-flex;
     padding: 10px 14px;
-    height: 41px;
+    height: 55px;
     border: none;
     border-bottom: 1px solid #ccc;
     margin: 0 10px;
@@ -145,7 +117,6 @@ const CategoryNavA = styled.a`
 
 const CategoryNavItem = styled.div`
     display: flex;
-    /* height: 100%; */
     align-items: center;
     justify-content: center;
 `;

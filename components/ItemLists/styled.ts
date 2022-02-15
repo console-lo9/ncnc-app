@@ -41,7 +41,7 @@ export const InfoContainer = styled.div`
 
 export const InfoDiv2 = styled.div`
     padding: 15px 20px;
-    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
     position: relative;
 `;
 
