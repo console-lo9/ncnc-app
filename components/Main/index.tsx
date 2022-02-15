@@ -5,48 +5,68 @@ import Link from 'next/link';
 import { selectBrandActions } from 'store';
 
 import Section from 'layout/Section';
-import CategoryNav from './CategoryNav';
-import { ItemsHolder } from 'components/Brand/styled';
-import { conCategory1, conCategory2s } from 'types/categoryTypes';
-import { CategoryListType, conCategory1s } from 'types/categoryListTypes';
+
+import { CategoryListType } from 'types/categoryListTypes';
 import useAxios from 'hooks/useAxios';
+import { Fragment } from 'react';
+import { SectionWrapper } from 'components/Category';
 
 const Category = (): JSX.Element => {
     const conCategory1s =
         useAxios<CategoryListType>('/con-category1s')?.conCategory1s;
 
     return (
-        <CategoryContainer>
-            <ItemsHolder>
-                <SectionWrapper>
-                    {!conCategory1s ? (
-                        <h3></h3>
-                    ) : (
-                        conCategory1s.map((category) => (
-                            <Section key={category.id}>
-                                <SectionDiv>
-                                    <Link href={`/categories/${category.id}`}>
-                                        <SectionA>
-                                            <GrowDiv>
-                                                <BrandImg
-                                                    src={category.imageUrl}
-                                                    alt="logo"
-                                                />
-                                                <BrandName>
-                                                    {category.name}
-                                                </BrandName>
-                                            </GrowDiv>
-                                        </SectionA>
-                                    </Link>
-                                </SectionDiv>
-                            </Section>
-                        ))
-                    )}
-                </SectionWrapper>
-            </ItemsHolder>
-        </CategoryContainer>
+        <Fragment>
+            <MainWrapper>
+                {!conCategory1s ? (
+                    <h3></h3>
+                ) : (
+                    conCategory1s.map((category) => (
+                        <Section key={category.id}>
+                            <SectionDiv>
+                                <Link href={`/categories/${category.id}`}>
+                                    <SectionA>
+                                        <GrowDiv>
+                                            <BrandImg
+                                                src={category.imageUrl}
+                                                alt="logo"
+                                            />
+                                            <BrandName>
+                                                {category.name}
+                                            </BrandName>
+                                        </GrowDiv>
+                                    </SectionA>
+                                </Link>
+                            </SectionDiv>
+                        </Section>
+                    ))
+                )}
+                <TitleDiv>
+                    <div>
+                        <WarnDiv>놓치지 마세요</WarnDiv>
+                        <TodaySaleDiv>오늘의 땡처리콘!</TodaySaleDiv>
+                    </div>
+                </TitleDiv>
+            </MainWrapper>
+        </Fragment>
     );
 };
+
+const TitleDiv = styled.div`
+    display: flex;
+    width: 100%;
+
+    margin: 14px 0;
+`;
+const WarnDiv = styled.div`
+    font-size: 14px;
+    color: red;
+    margin-bottom: 5px;
+`;
+const TodaySaleDiv = styled.div`
+    font-size: 16px;
+    font-weight: 700;
+`;
 
 const CategoryContainer = styled.div`
     display: flex;
@@ -54,12 +74,8 @@ const CategoryContainer = styled.div`
     flex-direction: column;
 `;
 
-export const SectionWrapper = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 20px;
-    background-color: rgb(238, 238, 238);
-    overflow: auto;
+export const MainWrapper = styled(SectionWrapper)`
+    padding-bottom: 0;
 `;
 
 const SectionDiv = styled.div`

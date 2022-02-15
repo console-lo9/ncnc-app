@@ -81,6 +81,7 @@ const CategoryNavBar = styled.nav`
     position: fixed;
     max-width: 48rem;
     background-color: #fff;
+    z-index: 49;
 `;
 const CategoryNavBox = styled.div`
     width: 100%;

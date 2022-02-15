@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 
 import Category from 'components/Category';
-import { conCategory1s } from 'types/categoryListTypes';
 import { conCategory1 } from 'types/categoryTypes';
+import { conCategory1s } from 'types/categoryListTypes';
+import { DealItemProps } from 'components/Deal/types';
 import { getCategoryIdActions } from 'store';
 import { fetcher } from 'utils/fetcher';
-import { DealItemProps } from 'components/Deal/types';
 
 const CategoriesPage = () => {
     const dispatch = useDispatch();

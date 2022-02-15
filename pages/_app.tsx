@@ -13,15 +13,15 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     const router = useRouter();
     const [headerTitle, setHeaderTitle] = useState('');
     const title = router.asPath;
+    console.log(router);
 
     const splitRouter = title.split('/');
     const category = splitRouter[1];
     const id = Number(splitRouter[2]);
 
-    const contactsTitle = title.replace('/', '');
-
     let name: string = '';
 
+    console.log(title);
     useEffect(() => {
         if (id) {
             const getCategories = async () => {
@@ -33,27 +33,28 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
                     const fetchUrl = `con-category2s/${id}`;
                     const { conCategory2 } = await fetcher(fetchUrl);
                     name = conCategory2.name;
-                } else if (contactsTitle === 'contacts') {
-                    name = '고객센터';
                 } else {
                     name = ' ';
                 }
                 setHeaderTitle(name);
             };
             getCategories();
+        } else {
+            if (title === '/contacts') {
+                name = '고객센터';
+                setHeaderTitle(name);
+            }
         }
-    }, [id]);
+    }, [id, router, headerTitle, name]);
 
     return (
-        <>
-            <Container>
-                <Header name={headerTitle} />
-                <Global styles={reset} />
-                <ContentsBox>
-                    <Component {...pageProps} />
-                </ContentsBox>
-            </Container>
-        </>
+        <Container>
+            <Header name={headerTitle} />
+            <Global styles={reset} />
+            <ContentsBox>
+                <Component {...pageProps} />
+            </ContentsBox>
+        </Container>
     );
 };
 
