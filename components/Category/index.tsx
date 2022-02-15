@@ -1,13 +1,14 @@
 import styled from '@emotion/styled';
-import useAxios from 'hooks/useAxios';
-import Section from 'layout/Section';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+
+import Link from 'next/link';
 import { selectBrandActions } from 'store';
-import { CategoryListType, conCategory1s } from 'types/categoryListTypes';
-import { CategoryType, conCategory1, conCategory2s } from 'types/categoryTypes';
+
+import Section from 'layout/Section';
 import CategoryNav from './CategoryNav';
+import { ItemsHolder } from 'components/Brand/styled';
+import { conCategory1, conCategory2s } from 'types/categoryTypes';
+import { conCategory1s } from 'types/categoryListTypes';
 
 // const Category = ({ id }: { id: number }): JSX.Element => {
 //     const conCategory = useAxios<CategoryType>(`con-category1s/${id}/nested`);
@@ -63,31 +64,33 @@ const Category = ({
     return (
         <>
             <CategoryNav categoryList={categoryList} id={id} />
-            <SectionWrapper>
-                {categories &&
-                    categories!.conCategory2s.map(
-                        (category: conCategory2s, i: number) => (
-                            <Section key={`category-${i}`}>
-                                <SectionDiv>
-                                    <Link href={`/brands/${category.id}`}>
-                                        <SectionA
-                                            id={i.toString()}
-                                            onClick={getBrandHandler}
-                                        >
-                                            <BrandImg
-                                                src={category.imageUrl}
-                                                alt="logo"
-                                            />
-                                            <BrandName>
-                                                {category.name}
-                                            </BrandName>
-                                        </SectionA>
-                                    </Link>
-                                </SectionDiv>
-                            </Section>
-                        ),
-                    )}
-            </SectionWrapper>
+            <ItemsHolder>
+                <SectionWrapper>
+                    {categories &&
+                        categories!.conCategory2s.map(
+                            (category: conCategory2s, i: number) => (
+                                <Section key={`category-${i}`}>
+                                    <SectionDiv>
+                                        <Link href={`/brands/${category.id}`}>
+                                            <SectionA
+                                                id={i.toString()}
+                                                onClick={getBrandHandler}
+                                            >
+                                                <BrandImg
+                                                    src={category.imageUrl}
+                                                    alt="logo"
+                                                />
+                                                <BrandName>
+                                                    {category.name}
+                                                </BrandName>
+                                            </SectionA>
+                                        </Link>
+                                    </SectionDiv>
+                                </Section>
+                            ),
+                        )}
+                </SectionWrapper>
+            </ItemsHolder>
         </>
     );
 };

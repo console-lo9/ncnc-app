@@ -1,10 +1,12 @@
 import { Dispatch, SetStateAction } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+
 import { Qa } from 'types/qaTypes';
 import Image from 'next/image';
 import qaCloseArrow from 'assets/qaCloseArrow.svg';
 import qaOpenArrow from 'assets/qaOpenArrow.svg';
+
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 const QnaContainer = styled.div`
     border-bottom: 2px solid #ebeced;

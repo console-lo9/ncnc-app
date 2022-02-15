@@ -1,7 +1,8 @@
 import { useState } from 'react';
+
 import useAxios from 'hooks/useAxios';
-import { Qas } from 'types/qaTypes';
 import Qna from './Qna';
+import { Qas } from 'types/qaTypes';
 
 const QnaList = ({ qaId }: { qaId: number }) => {
     const qaBuyList = useAxios<Qas>(`qas?qaTypeId=1`);

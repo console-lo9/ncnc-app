@@ -1,9 +1,12 @@
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import useAxios from 'hooks/useAxios';
 import { useEffect, useState } from 'react';
+import useAxios from 'hooks/useAxios';
+
 import { QaType, QnaType } from 'types/qaTypes';
 import QnaList from './QnaList';
+
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+
 const ContactDiv = styled.div`
     display: flex;
     margin-top: 59px;
