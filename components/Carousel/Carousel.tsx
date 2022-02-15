@@ -80,7 +80,6 @@ const Carousel = () => {
                         alt="menu"
                         layout="fill"
                         sizes="672px"
-
                     />
                 </Inner>
                 <Inner>
@@ -91,7 +90,6 @@ const Carousel = () => {
                         alt="menu"
                         layout="fill"
                         sizes="672px"
-
                     />
                 </Inner>
                 <Inner>
@@ -102,7 +100,6 @@ const Carousel = () => {
                         alt="menu"
                         layout="fill"
                         sizes="672px"
-
                     />
                 </Inner>
             </Container>

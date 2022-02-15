@@ -11,6 +11,7 @@ const ContactDiv = styled.div`
     display: flex;
     margin-top: 59px;
     flex-direction: column;
+    background-color: #fff;
 `;
 const DescSection = styled.section`
     padding: 17px;
@@ -79,7 +80,7 @@ const Contact = () => {
                 <Time>평일 10:00 ~ 18:00</Time>
                 <Rest>점심시간 12:30 ~ 13:30 / 토·일·공휴일 휴무</Rest>
             </DescSection>
-            <BackgroundDiv></BackgroundDiv>
+            <BackgroundDiv />
             <FrequentQaSection>
                 <FrequentQa>자주 묻는 질문</FrequentQa>
                 <ButtonDiv>
