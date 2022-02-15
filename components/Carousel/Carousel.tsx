@@ -16,26 +16,31 @@ type ButtonDivProps = {
 };
 
 const Wrapper = styled.div`
-    display: block;
-    float: left;
+    display: flex;
+    overflow: hidden;
+    margin-top: 55px;
 `;
 
 const Container = styled.div<ContainerProps>`
     display: flex;
-    width: 100%;
-    overflow: hidden;
+    flex-direction: row;
     transform: translateX(${(props) => props.translateX}px);
     transition: 350ms all ease-in-out;
 `;
 
 const Inner = styled.div`
+    flex-shrink: 0;
+    width: 672px;
+    height: 252px;
+    overflow: hidden;
     position: relative;
 `;
 
 const Buttons = styled.div`
     position: absolute;
-    top: 165px;
-    left: 310px;
+    top: 270px;
+    left: 80%;
+    transform: translateX(100%);
     display: flex;
 `;
 
@@ -61,7 +66,7 @@ const Carousel = () => {
         }
     };
 
-    const cardWidth = -375;
+    const cardWidth = -672;
     const translateX = cardWidth * current;
 
     return (
@@ -70,31 +75,34 @@ const Carousel = () => {
                 <Inner>
                     <Image
                         src={banner1}
-                        layout={'fill'}
-                        width={375}
-                        height={141}
+                        width={672}
+                        height={252}
                         alt="menu"
-                        sizes={'100vw'}
+                        layout="fill"
+                        sizes="672px"
+
                     />
                 </Inner>
                 <Inner>
                     <Image
                         src={banner2}
-                        layout={'fill'}
-                        width={634}
-                        height={311}
+                        width={672}
+                        height={252}
                         alt="menu"
-                        sizes={'100vw'}
+                        layout="fill"
+                        sizes="672px"
+
                     />
                 </Inner>
                 <Inner>
                     <Image
                         src={banner3}
-                        layout={'fill'}
-                        width={461}
-                        height={195}
+                        width={672}
+                        height={252}
                         alt="menu"
-                        sizes={'100vw'}
+                        layout="fill"
+                        sizes="672px"
+
                     />
                 </Inner>
             </Container>
