@@ -1,6 +1,5 @@
-import Item from 'components/ItemLists/Item';
 import { useRouter } from 'next/router';
-import React from 'react';
+import Item from 'components/ItemLists/Item';
 
 const Items = () => {
     const router = useRouter();

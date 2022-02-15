@@ -1,6 +1,6 @@
 import { ConItem } from 'types/itemTypes';
 import { get3DigitsCost } from 'utils/functions';
-import * as Styled from './styled';
+import * as Styled from './styled/item-info';
 
 const ItemInfo = ({ conItem }: { conItem: ConItem }) => {
     if (conItem && Object.keys(conItem).length === 0) return <div>로딩중</div>;

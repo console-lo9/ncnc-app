@@ -1,96 +1,45 @@
-import { css, keyframes } from '@emotion/react';
-import styled from '@emotion/styled';
-import Image from 'next/image';
-import closeButton from 'assets/closeButton.svg';
-import enter from 'assets/enter.svg';
-import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { mypageActions, RootState } from 'store';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const MypageDiv = styled.div<{ isOpen: boolean }>`
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    transform: translateX(-100%);
-    transition: 0.7s;
-    display: block;
-    ${({ isOpen }) => {
-        if (isOpen) {
-            return css`
-                transform: translateX(0);
-            `;
-        }
-    }}
-    z-index: 100;
-`;
-const Nav = styled.nav`
-    background-color: rgb(255, 255, 255);
-    height: 58px;
-    top: 0px;
-`;
-const NavDiv = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 17px;
-`;
-const TitleSpan = styled.span`
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    font-size: 15px;
-    font-weight: 600;
-`;
-const EmptyDiv = styled.div`
-    background-color: rgb(235, 236, 237);
-    height: 10px;
-`;
-const EnterDiv = styled.div`
-    display: flex;
-    padding: 15px 17px;
-    background-color: #fff;
-    justify-content: space-between;
-`;
-const TextSpan = styled.div`
-    font-size: 15px;
-`;
+import closeButton from 'public/closeButton.svg';
+import enter from 'public/enter.svg';
+
+import * as Styled from './styled';
+
 const Mypage = () => {
     const dispatch = useDispatch();
     const mypage = useSelector((state: RootState) => state.mypage);
-    console.log(mypage);
+
     const closeHandler = () => {
         dispatch(mypageActions.mypage(false));
     };
     return (
-        <MypageDiv isOpen={mypage.mypage}>
-            <Nav>
-                <NavDiv>
+        <Styled.MypageDiv isOpen={mypage.mypage}>
+            <Styled.Nav>
+                <Styled.NavDiv>
                     <button onClick={closeHandler}>
                         <Image src={closeButton} />
                     </button>
-                    <TitleSpan>마이페이지</TitleSpan>
-                </NavDiv>
-            </Nav>
+                    <Styled.TitleSpan>마이페이지</Styled.TitleSpan>
+                </Styled.NavDiv>
+            </Styled.Nav>
             <div>
                 <section>
-                    <EmptyDiv />
+                    <Styled.EmptyDiv />
                     <Link href={'/contacts'}>
                         <a onClick={closeHandler}>
-                            <EnterDiv>
-                                <TextSpan>고객센터</TextSpan>
+                            <Styled.EnterDiv>
+                                <Styled.TextSpan>고객센터</Styled.TextSpan>
                                 <Image src={enter} />
-                            </EnterDiv>
+                            </Styled.EnterDiv>
                         </a>
                     </Link>
-                    <EmptyDiv />
+                    <Styled.EmptyDiv />
                 </section>
             </div>
-        </MypageDiv>
+        </Styled.MypageDiv>
     );
 };
 

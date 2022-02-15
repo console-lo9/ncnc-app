@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import React from 'react';
 
 const ContentsBox: React.FC = ({ children }) => {
     return <ContentsWrapper>{children}</ContentsWrapper>;

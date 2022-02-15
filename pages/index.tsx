@@ -1,21 +1,21 @@
+import { Fragment } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import useAxios from 'hooks/useAxios';
 import axios from 'axios';
 
-import Deal from 'components/Deal/Deal';
-import { DealItemProps } from 'components/Deal/types';
-
-import Carousel from 'components/Carousel/Carousel';
 import Main from 'components/Main';
+import Deal from 'components/Deal/Deal';
+import Carousel from 'components/Carousel/Carousel';
+import { DealItemProps } from 'components/Deal/types';
+import useAxios from 'hooks/useAxios';
 
-import { CategoryListType } from 'types/categoryListTypes';
-import styled from '@emotion/styled';
-import { Fragment } from 'react';
 import Mypage from 'components/Mypage';
+import styled from '@emotion/styled';
+
 interface HomeProps {
     conItems: DealItemProps[];
 }
+
 const Home: NextPage<HomeProps> = ({ conItems }) => {
     useAxios('/con-items/soon');
 

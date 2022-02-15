@@ -1,11 +1,12 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import iconMenu from '/assets/menu.png';
-import Image from 'next/image';
-import back from '/public/Back.svg';
-import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
+
 import { mypageActions } from 'store';
+import iconMenu from '/public/menu.png';
+
+import back from '/public/Back.svg';
+import Image from 'next/image';
+import styled from '@emotion/styled';
 
 const Wrapper = styled.nav`
     width: 100%;

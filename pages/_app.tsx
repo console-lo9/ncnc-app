@@ -1,14 +1,15 @@
-import { reset } from 'styles/globalStyles';
-import { Global } from '@emotion/react';
+import React, { useEffect, useState } from 'react';
 import type { AppProps } from 'next/app';
-import { RootState, wrapper } from 'store';
+import { useRouter } from 'next/router';
+
+import { wrapper } from 'store';
+import { fetcher } from 'utils/fetcher';
 import Container from 'layout/Container';
 import Header from 'layout/Header';
 import ContentsBox from 'layout/ContentsBox';
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { fetcher } from 'utils/fetcher';
-import { useSelector } from 'react-redux';
+
+import { reset } from 'styles/globalStyles';
+import { Global } from '@emotion/react';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     const router = useRouter();

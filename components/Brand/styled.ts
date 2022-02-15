@@ -57,3 +57,7 @@ export const OriginalPrice = styled.span`
 `;
 
 export const ItemTitle = styled(SellingPrice)``;
+
+export const List = styled.li`
+    cursor: pointer;
+`;
