@@ -1,6 +1,7 @@
+import useAxios from 'hooks/useAxios';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import useAxios from 'hooks/useAxios';
 
 import { RootState } from 'store';
 import { ConCategory1, ConCategory2s, ConItems } from 'types/items';
@@ -37,35 +38,39 @@ const BrandItems: React.FC<BrandItemsProp> = ({ conCategoryId, brandId }) => {
         <Styled.ItemsHolder>
             {brandItems?.map((item) => (
                 <li key={item.id}>
-                    <Styled.ItemInfoWrapper>
-                        <div>
-                            <Styled.ItemImage src={item.imageUrl} />
-                        </div>
-                        <Styled.InfoRight>
-                            <Styled.SellingPrice>
-                                <b>{item.name}</b>
-                            </Styled.SellingPrice>
-                            <Styled.InfoBottom>
-                                <Styled.DiscountRate>
-                                    {Math.ceil(
-                                        100 *
-                                            (1 -
-                                                item.minSellingPrice /
-                                                    item.originalPrice),
-                                    )}
-                                    %
-                                </Styled.DiscountRate>
+                    <Link href={`/items/${item.id}`}>
+                        <Styled.ItemInfoWrapper>
+                            <div>
+                                <Styled.ItemImage src={item.imageUrl} />
+                            </div>
+                            <Styled.InfoRight>
                                 <Styled.SellingPrice>
-                                    {item.minSellingPrice.toLocaleString()}원
+                                    <b>{item.name}</b>
                                 </Styled.SellingPrice>
-                                <Styled.OriginalPrice>
-                                    <s>
-                                        {item.originalPrice.toLocaleString()}원
-                                    </s>
-                                </Styled.OriginalPrice>
-                            </Styled.InfoBottom>
-                        </Styled.InfoRight>
-                    </Styled.ItemInfoWrapper>
+                                <Styled.InfoBottom>
+                                    <Styled.DiscountRate>
+                                        {Math.ceil(
+                                            100 *
+                                                (1 -
+                                                    item.minSellingPrice /
+                                                        item.originalPrice),
+                                        )}
+                                        %
+                                    </Styled.DiscountRate>
+                                    <Styled.SellingPrice>
+                                        {item.minSellingPrice.toLocaleString()}
+                                        원
+                                    </Styled.SellingPrice>
+                                    <Styled.OriginalPrice>
+                                        <s>
+                                            {item.originalPrice.toLocaleString()}
+                                            원
+                                        </s>
+                                    </Styled.OriginalPrice>
+                                </Styled.InfoBottom>
+                            </Styled.InfoRight>
+                        </Styled.ItemInfoWrapper>
+                    </Link>
                 </li>
             ))}
         </Styled.ItemsHolder>

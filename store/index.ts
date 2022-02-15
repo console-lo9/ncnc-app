@@ -1,5 +1,31 @@
+<<<<<<< HEAD
 import { combineReducers, configureStore, createSlice } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
+=======
+import {
+    combineReducers,
+    configureStore,
+    createSlice,
+    PayloadAction,
+} from '@reduxjs/toolkit';
+import { createWrapper } from 'next-redux-wrapper';
+
+interface OptionReducer {
+    isOpen: boolean;
+}
+const optionInitialState: OptionReducer = {
+    isOpen: false,
+};
+const optionSlice = createSlice({
+    name: 'option',
+    initialState: optionInitialState,
+    reducers: {
+        changeOpenState(state, action: PayloadAction<boolean>) {
+            state.isOpen = action.payload;
+        },
+    },
+});
+>>>>>>> 9fff0eda417fbe1e8def62e86373a7da97d77045
 
 const fetchInitialState = {
     fetchData: [],
@@ -31,6 +57,7 @@ const selectBrandSlice = createSlice({
 });
 
 const rootReducer = combineReducers({
+    option: optionSlice.reducer,
     fetch: fetchDataSlice.reducer,
     brand: selectBrandSlice.reducer,
 });
@@ -41,10 +68,15 @@ const makeStore = () =>
     configureStore({
         reducer: {
             fetch: fetchDataSlice.reducer,
+<<<<<<< HEAD
             brand: selectBrandSlice.reducer,
+=======
+            option: optionSlice.reducer,
+>>>>>>> 9fff0eda417fbe1e8def62e86373a7da97d77045
         },
     });
 
+export const optionActions = optionSlice.actions;
 export const fetchDataActions = fetchDataSlice.actions;
 export const selectBrandActions = selectBrandSlice.actions;
 
