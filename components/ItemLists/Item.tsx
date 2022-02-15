@@ -20,6 +20,7 @@ const Item = ({ conItemId }: { conItemId: number }): JSX.Element => {
         <Fragment>
             <ItemInfo conItem={conItem} />
             <ItemDesc conItem={conItem} />
+
             <OptionButton
                 options={options}
                 originalPrice={conItem.originalPrice}
