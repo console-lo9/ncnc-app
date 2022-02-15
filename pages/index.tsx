@@ -10,6 +10,8 @@ import Carousel from 'components/Carousel/Carousel';
 import Main from 'components/Main';
 
 import { CategoryListType } from 'types/categoryListTypes';
+import Mypage from 'components/Mypage';
+import { Wrapper } from 'styles/globalStyles';
 interface HomeProps {
     conItems: DealItemProps[];
 }
@@ -29,6 +31,7 @@ const Home: NextPage<HomeProps> = ({ conItems }) => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <Mypage />
             <Carousel />
             <Main />
             <Deal onDealItems={conItems} />

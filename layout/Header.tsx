@@ -36,8 +36,6 @@ const Text = styled.div`
     justify-content: space-around;
 `;
 
-// const navigate = useNavigate();
-
 const Header = ({ name }: { name: string }): JSX.Element => {
     const router = useRouter();
     return (
