@@ -7,22 +7,6 @@ import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { mypageActions, RootState } from 'store';
 
-const slideLeft = keyframes`
-  from {
-    transform: translateX(0px);
-  }
-  to {
-    transform: translateX(-600px);
-  }
-`;
-const slideRight = keyframes`
-  from {
-    transform: translateX(-600px);
-  }
-  to {
-    transform: translateX(0px);
-  }
-`;
 const MypageDiv = styled.div<{ isOpen: boolean }>`
     position: absolute;
     top: 0;
@@ -32,23 +16,17 @@ const MypageDiv = styled.div<{ isOpen: boolean }>`
     width: 100%;
     height: 100%;
     background-color: white;
-
+    transform: translateX(-100%);
+    transition: 0.7s;
     display: block;
     ${({ isOpen }) => {
-        if (!isOpen) {
+        if (isOpen) {
             return css`
-                animation-name: ${slideLeft};
-                display: none;
+                transform: translateX(0);
             `;
         }
     }}
     z-index: 100;
-    overflow: hidden;
-
-    animation-duration: 250ms;
-    animation-timing-function: ease-out;
-    animation-name: ${slideRight};
-    animation-fill-mode: forwards;
 `;
 const Nav = styled.nav`
     background-color: rgb(255, 255, 255);
