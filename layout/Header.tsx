@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from '@emotion/styled';
 import iconMenu from '/assets/menu.png';
 import Image from 'next/image';
 import back from '/assets/Back.png';
+import { useDispatch } from 'react-redux';
+import { mypageActions } from 'store';
+import Mypage from 'components/Mypage';
 
 const Wrapper = styled.nav`
     width: 100%;
@@ -35,31 +38,39 @@ const Text = styled.div`
     justify-content: space-around;
 `;
 
-// const navigate = useNavigate();
+const PageDiv = styled.div`
+    z-index: 100;
+`;
 
 const Header = ({ name }: { name: string }): JSX.Element => {
+    const dispatch = useDispatch();
+    const openHandler = () => {
+        dispatch(mypageActions.mypage(true));
+    };
     return (
-        <Wrapper>
-            {name ? (
-                <>
-                    <IconWrap>
-                        <Image src={back} alt="menu" />
-                    </IconWrap>
-                    <Text>
-                        <p>{name}</p>
-                    </Text>
-                </>
-            ) : (
-                <>
-                    <IconWrap>
-                        <Image src={iconMenu} alt="menu" />
-                    </IconWrap>
-                    <Text>
-                        <p>니콘 내콘</p>
-                    </Text>
-                </>
-            )}
-        </Wrapper>
+        <Fragment>
+            <Wrapper>
+                {name ? (
+                    <>
+                        <IconWrap>
+                            <Image src={back} alt="menu" />
+                        </IconWrap>
+                        <Text>
+                            <p>{name}</p>
+                        </Text>
+                    </>
+                ) : (
+                    <>
+                        <IconWrap onClick={openHandler}>
+                            <Image src={iconMenu} alt="menu" />
+                        </IconWrap>
+                        <Text>
+                            <p>니콘 내콘</p>
+                        </Text>
+                    </>
+                )}
+            </Wrapper>
+        </Fragment>
     );
 };
 
