@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import iconMenu from '/assets/icon-menu.png';
+import iconMenu from '/assets/menu.png';
 import Image from 'next/image';
 import back from '/assets/Back.png';
 
