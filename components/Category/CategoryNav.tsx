@@ -98,22 +98,16 @@ const CategoryNavBar = styled.nav`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* position: fixed; */
+    position: fixed;
     max-width: 48rem;
+    background-color: #fff;
 `;
 const CategoryNavBox = styled.div`
-    height: 100%;
     width: 100%;
     height: 41px;
     display: flex;
     overflow-x: scroll;
-    overflow-y: hidden;
     white-space: nowrap;
-    transition: all 0.2s;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-        display: none;
-    }
     font-size: 16px;
 `;
 
@@ -121,9 +115,6 @@ const CategoryNavSlider = styled.div`
     padding: 0px 10px;
     border-bottom: 1px solid #ccc;
     white-space: nowrap;
-    &::-webkit-scrollbar {
-        display: none;
-    }
     font-size: 16px;
 `;
 

@@ -1,8 +1,10 @@
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import iconMenu from '/assets/menu.png';
 import Image from 'next/image';
 import back from '/assets/Back.png';
+import { fetcher } from 'utils/fetcher';
 
 const Wrapper = styled.nav`
     width: 375px;
@@ -27,17 +29,18 @@ const IconWrap = styled.button`
 
 interface HeaderProps {
     title: string;
+    name: string;
 }
 
-const Header = ({ title }: HeaderProps) => {
+const Header = ({ name }: { name: string }): JSX.Element => {
     return (
         <Wrapper>
-            {title ? (
+            {name ? (
                 <>
                     <IconWrap>
                         <Image src={back} alt="menu" />
                     </IconWrap>
-                    <p>{title}</p>
+                    <p>{name}</p>
                 </>
             ) : (
                 <>
@@ -50,5 +53,13 @@ const Header = ({ title }: HeaderProps) => {
         </Wrapper>
     );
 };
+
+const HeaderBox = styled.header`
+    top: 0px;
+    position: fixed;
+    background-color: #fff;
+    height: 59px;
+    display: flex;
+`;
 
 export default Header;

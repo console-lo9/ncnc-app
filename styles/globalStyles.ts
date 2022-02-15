@@ -47,6 +47,9 @@ export const reset = css`
         font-size: inherit;
     }
     /* Default CSS */
+    html {
+        font-size: 14px;
+    }
     body {
         font-family: apple sd gothic neo, sans-srif;
         font-size: 14px;
@@ -57,5 +60,10 @@ export const reset = css`
     }
     #root {
         height: 100%;
+    }
+
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+        display: none;
     }
 `;
