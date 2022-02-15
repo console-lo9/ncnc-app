@@ -2,59 +2,18 @@ import { Dispatch, SetStateAction } from 'react';
 
 import { Qa } from 'types/qaTypes';
 import Image from 'next/image';
-import qaCloseArrow from 'assets/qaCloseArrow.svg';
-import qaOpenArrow from 'assets/qaOpenArrow.svg';
+import qaCloseArrow from 'public/qaCloseArrow.svg';
+import qaOpenArrow from 'public/qaOpenArrow.svg';
 
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import * as Styled from './styled';
 
-const QnaContainer = styled.div`
-    border-bottom: 2px solid #ebeced;
-`;
-const QuestionButton = styled.button`
-    display: flex;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 17px;
-    width: 100%;
-`;
-const QSpan = styled.span`
-    margin-right: 10px;
-    color: rgb(255, 87, 87);
-`;
-const QuestionSpan = styled.span`
-    flex-grow: 1;
-    text-align: left;
-`;
-const AnswerContainer = styled.div<{ active: boolean }>`
-    ${({ active }) => {
-        if (!active) {
-            return css`
-                display: none;
-            `;
-        }
-    }}
-    background-color: rgb(235, 236, 237);
-    padding: 17px;
-`;
-const AnswerDiv = styled.div`
-    background-color: rgb(235, 236, 237);
-    padding: 17px;
-    font-size: 16px;
-    transition: all 1.5s ease 0s;
-    line-height: 1.3;
-    white-space: pre-wrap;
-`;
-
-const Qna = ({
-    qa,
-    currentQa,
-    setCurrentQa,
-}: {
+export interface QnaProps {
     qa: Qa;
     currentQa: number;
     setCurrentQa: Dispatch<SetStateAction<number>>;
-}) => {
+}
+
+const Qna = ({ qa, currentQa, setCurrentQa }: QnaProps) => {
     const clickHandler = () => {
         setCurrentQa(qa.id);
         if (qa.id === currentQa) {
@@ -63,10 +22,10 @@ const Qna = ({
     };
 
     return (
-        <QnaContainer>
-            <QuestionButton onClick={clickHandler}>
-                <QSpan>Q.</QSpan>
-                <QuestionSpan>{qa.question}</QuestionSpan>
+        <Styled.QnaContainer>
+            <Styled.QuestionButton onClick={clickHandler}>
+                <Styled.QSpan>Q.</Styled.QSpan>
+                <Styled.QuestionSpan>{qa.question}</Styled.QuestionSpan>
                 <span>
                     {qa.id === currentQa ? (
                         <Image src={qaCloseArrow} />
@@ -74,13 +33,13 @@ const Qna = ({
                         <Image src={qaOpenArrow} />
                     )}
                 </span>
-            </QuestionButton>
-            <AnswerContainer active={qa.id === currentQa}>
-                <AnswerDiv>
+            </Styled.QuestionButton>
+            <Styled.AnswerContainer active={qa.id === currentQa}>
+                <Styled.AnswerDiv>
                     <p>{qa.answer}</p>
-                </AnswerDiv>
-            </AnswerContainer>
-        </QnaContainer>
+                </Styled.AnswerDiv>
+            </Styled.AnswerContainer>
+        </Styled.QnaContainer>
     );
 };
 export default Qna;

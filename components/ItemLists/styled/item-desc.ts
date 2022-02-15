@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 export const DescContainer = styled.div`
@@ -7,6 +8,25 @@ export const DescContainer = styled.div`
 
 export const DescSection = styled.section`
     margin-bottom: 150px;
+`;
+
+export const CoverDiv = styled.div<{ isOpen: boolean }>`
+    ${({ isOpen }) => {
+        if (!isOpen) {
+            return css`
+                display: none;
+            `;
+        }
+    }}
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
 `;
 
 export const InfoDiv = styled.div`

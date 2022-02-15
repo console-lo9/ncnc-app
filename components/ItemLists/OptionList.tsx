@@ -1,4 +1,3 @@
-import styled from '@emotion/styled';
 import { Dispatch, Fragment, SetStateAction } from 'react';
 import { Option } from 'types/itemTypes';
 import OptionItem from './OptionItem';

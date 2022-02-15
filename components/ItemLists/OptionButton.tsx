@@ -1,135 +1,15 @@
-import styled from '@emotion/styled';
-import { css, keyframes } from '@emotion/react';
-import { useEffect, useState } from 'react';
-import { Option } from 'types/itemTypes';
-import OptionList from './OptionList';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { optionActions, RootState } from 'store';
 import Image from 'next/image';
-import pencil from 'assets/pencil.svg';
-import closeButton from 'assets/closeButton.svg';
 
-const slideUp = keyframes`
-  from {
-    transform: translateY(200px);
-  }
-  to {
-    transform: translateY(0px);
-  }
-`;
-const slideDown = keyframes`
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(200px);
-  }
-`;
+import { optionActions, RootState } from 'store';
+import OptionList from './OptionList';
+import { Option } from 'types/itemTypes';
 
-const OptionContainer = styled.div`
-    position: relative;
-`;
+import pencil from 'public/pencil.svg';
+import closeButton from 'public/closeButton.svg';
+import * as Styled from './styled/option-button';
 
-const OptionSection = styled.section<{ isOpen: boolean }>`
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    bottom: 50px;
-    width: 100%;
-    max-width: 672px;
-    border-top: 1px solid rgb(204, 204, 204);
-    ${({ isOpen }) => {
-        if (!isOpen) {
-            return css`
-                animation-name: ${slideDown};
-                display: none;
-            `;
-        }
-    }}
-    animation-duration: 150ms;
-    animation-timing-function: ease-out;
-    animation-name: ${slideUp};
-    animation-fill-mode: forwards;
-`;
-
-const ButtonSection = styled.section<{ isOpen: boolean }>`
-    display: flex;
-    flex-direction: row;
-    position: fixed;
-    bottom: 50px;
-    width: 100%;
-    max-width: 672px;
-    border-top: 1px solid rgb(204, 204, 204);
-    ${({ isOpen }) => {
-        if (!isOpen) {
-            return css`
-                display: none;
-            `;
-        }
-    }}
-    background-color: white;
-`;
-const OptionTitle = styled.div`
-    display: flex;
-    align-items: center;
-    padding-left: 15px;
-    height: 50px;
-    width: 100%;
-    color: rgb(0, 0, 0);
-    background: rgb(238, 238, 238);
-`;
-const TitleText = styled.span`
-    flex-grow: 1;
-`;
-const SelectedButton = styled.button`
-    display: flex;
-    font-size: 15px;
-    margin: 15px 25px;
-    padding: 10px 0 10px 20px;
-    background-color: #ebeced;
-    border-radius: 5px;
-    text-align: left;
-    width: 100%;
-`;
-const SelectedSpan = styled.span`
-    flex-grow: 1;
-`;
-const ImageDiv = styled.div`
-    padding-right: 10px;
-`;
-const OptionBtn = styled.button<{ disabled: boolean }>`
-    position: fixed;
-    bottom: 0;
-    background-color: #ff5757;
-    color: white;
-    width: 100%;
-
-    max-width: 672px;
-    height: 50px;
-    font-size: 1rem;
-    ${({ disabled }) => {
-        if (disabled) {
-            return css`
-                background-color: #ccc;
-            `;
-        }
-    }}
-`;
-const OptionDiv = styled.div<{ isOpen: boolean }>`
-    background-color: white;
-    width: 100%;
-    max-width: 672px;
-    height: 256px;
-
-    overflow: scroll;
-    ${({ isOpen }) => {
-        if (!isOpen) {
-            return css`
-                display: none;
-            `;
-        }
-    }}
-`;
 const OptionButton = ({
     options,
     originalPrice,
@@ -150,50 +30,50 @@ const OptionButton = ({
         setSelectedOption('');
     };
     return (
-        <OptionContainer>
-            <OptionSection isOpen={optionState.isOpen}>
-                <OptionTitle>
-                    <TitleText>옵션 선택하기</TitleText>
-                    <ImageDiv>
+        <Styled.OptionContainer>
+            <Styled.OptionSection isOpen={optionState.isOpen}>
+                <Styled.OptionTitle>
+                    <Styled.TitleText>옵션 선택하기</Styled.TitleText>
+                    <Styled.ImageDiv>
                         <button onClick={closeHandler}>
                             <Image src={closeButton} />
                         </button>
-                    </ImageDiv>
-                </OptionTitle>
-                <OptionDiv isOpen={optionState.isOpen}>
+                    </Styled.ImageDiv>
+                </Styled.OptionTitle>
+                <Styled.OptionDiv isOpen={optionState.isOpen}>
                     <OptionList
                         options={options}
                         originalPrice={originalPrice}
                         setSelectedOption={setSelectedOption}
                     />
-                </OptionDiv>
-            </OptionSection>
-            <ButtonSection
+                </Styled.OptionDiv>
+            </Styled.OptionSection>
+            <Styled.ButtonSection
                 isOpen={selectedOption !== '' && !optionState.isOpen}
             >
-                <SelectedButton onClick={optionHandler}>
-                    <SelectedSpan>{selectedOption}</SelectedSpan>
-                    <ImageDiv>
+                <Styled.SelectedButton onClick={optionHandler}>
+                    <Styled.SelectedSpan>{selectedOption}</Styled.SelectedSpan>
+                    <Styled.ImageDiv>
                         <Image src={pencil} />
-                    </ImageDiv>
-                </SelectedButton>
-            </ButtonSection>
+                    </Styled.ImageDiv>
+                </Styled.SelectedButton>
+            </Styled.ButtonSection>
             {selectedOption === '' && !optionState.isOpen ? (
-                <OptionBtn
+                <Styled.OptionBtn
                     disabled={optionState.isOpen}
                     onClick={optionHandler}
                 >
                     옵션 선택하기
-                </OptionBtn>
+                </Styled.OptionBtn>
             ) : (
-                <OptionBtn
+                <Styled.OptionBtn
                     disabled={optionState.isOpen}
                     onClick={optionHandler}
                 >
                     구매하기
-                </OptionBtn>
+                </Styled.OptionBtn>
             )}
-        </OptionContainer>
+        </Styled.OptionContainer>
     );
 };
 export default OptionButton;

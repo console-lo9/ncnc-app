@@ -1,19 +1,16 @@
 import Link from 'next/link';
-import { ConItems } from 'types/items';
+import { BrandItemsProp } from './types';
 
 import * as Styled from './styled';
-
-export interface BrandItemsProp {
-    conItems: ConItems[];
-}
+import { Fragment } from 'react';
 
 const BrandItems: React.FC<BrandItemsProp> = ({ conItems }) => {
     return (
-        <>
+        <Fragment>
             <Styled.CountItem>{conItems.length}개의 상품</Styled.CountItem>
             <Styled.ItemsHolder>
                 {conItems.map((item) => (
-                    <li key={item.id}>
+                    <Styled.List key={item.id}>
                         <Link href={`/items/${item.id}`}>
                             <Styled.ItemInfoWrapper>
                                 <div>
@@ -47,10 +44,10 @@ const BrandItems: React.FC<BrandItemsProp> = ({ conItems }) => {
                                 </Styled.InfoRight>
                             </Styled.ItemInfoWrapper>
                         </Link>
-                    </li>
+                    </Styled.List>
                 ))}
             </Styled.ItemsHolder>
-        </>
+        </Fragment>
     );
 };
 
