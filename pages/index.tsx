@@ -1,11 +1,20 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import styled from '@emotion/styled';
 import useAxios from 'hooks/useAxios';
+import Header from 'components/Header/Header';
+import Carousel from 'components/Carousel /Carousel';
+
+const Container = styled.div`
+    width: 375px;
+    overflow: hidden;
+`;
+
 const Home: NextPage = () => {
     useAxios('/con-category1s');
     useAxios('/con-items/soon');
     return (
-        <div>
+        <Container>
             <Head>
                 <title>NCNC App</title>
                 <meta
@@ -14,8 +23,9 @@ const Home: NextPage = () => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            hello!
-        </div>
+            <Header title={'땡처리'} />
+            <Carousel />
+        </Container>
     );
 };
 
