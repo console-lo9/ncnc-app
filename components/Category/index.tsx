@@ -7,6 +7,8 @@ import { selectBrandActions } from 'store';
 import Section from 'layout/Section';
 import CategoryNav from './CategoryNav';
 import { ItemsHolder } from 'components/Brand/styled';
+import { conCategory1, conCategory2s } from 'types/categoryTypes';
+import { conCategory1s } from 'types/categoryListTypes';
 
 // const Category = ({ id }: { id: number }): JSX.Element => {
 //     const conCategory = useAxios<CategoryType>(`con-category1s/${id}/nested`);
