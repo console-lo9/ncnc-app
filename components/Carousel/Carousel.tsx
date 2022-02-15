@@ -16,20 +16,19 @@ type ButtonDivProps = {
 };
 
 const Wrapper = styled.div`
-    display: flex;
+    display: block;
+    float: left;
 `;
 
 const Container = styled.div<ContainerProps>`
-    width: 1125px;
     display: flex;
+    width: 100%;
+    overflow: hidden;
     transform: translateX(${(props) => props.translateX}px);
     transition: 350ms all ease-in-out;
 `;
 
 const Inner = styled.div`
-    width: 375px;
-    height: 141px;
-    overflow: hidden;
     position: relative;
 `;
 
@@ -69,13 +68,34 @@ const Carousel = () => {
         <Wrapper>
             <Container translateX={translateX}>
                 <Inner>
-                    <Image src={banner1} width={375} height={141} alt="menu" />
+                    <Image
+                        src={banner1}
+                        layout={'fill'}
+                        width={375}
+                        height={141}
+                        alt="menu"
+                        sizes={'100vw'}
+                    />
                 </Inner>
                 <Inner>
-                    <Image src={banner2} width={375} height={141} alt="menu" />
+                    <Image
+                        src={banner2}
+                        layout={'fill'}
+                        width={634}
+                        height={311}
+                        alt="menu"
+                        sizes={'100vw'}
+                    />
                 </Inner>
                 <Inner>
-                    <Image src={banner3} width={375} height={141} alt="menu" />
+                    <Image
+                        src={banner3}
+                        layout={'fill'}
+                        width={461}
+                        height={195}
+                        alt="menu"
+                        sizes={'100vw'}
+                    />
                 </Inner>
             </Container>
             <Buttons>
