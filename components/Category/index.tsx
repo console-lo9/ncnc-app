@@ -3,6 +3,8 @@ import useAxios from 'hooks/useAxios';
 import Section from 'layout/Section';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { selectBrandActions } from 'store';
 import { CategoryListType, conCategory1s } from 'types/categoryListTypes';
 import { CategoryType, conCategory1, conCategory2s } from 'types/categoryTypes';
 import CategoryNav from './CategoryNav';
@@ -51,6 +53,13 @@ const Category = ({
     categoryList: conCategory1s[];
     id: number;
 }): JSX.Element => {
+    const dispatch = useDispatch();
+    const getBrandHandler = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        const brandId = Number(event.currentTarget.id);
+
+        dispatch(selectBrandActions.brand(brandId));
+    };
+
     return (
         <>
             <CategoryNav categoryList={categoryList} id={id} />
@@ -61,7 +70,10 @@ const Category = ({
                             <Section key={`category-${i}`}>
                                 <SectionDiv>
                                     <Link href={`/brands/${category.id}`}>
-                                        <SectionA>
+                                        <SectionA
+                                            id={i.toString()}
+                                            onClick={getBrandHandler}
+                                        >
                                             <BrandImg
                                                 src={category.imageUrl}
                                                 alt="logo"

@@ -9,21 +9,22 @@
 // };
 
 import Category from 'components/Category';
-import useAxios from 'hooks/useAxios';
-import Section from 'layout/Section';
 import { NextPage } from 'next';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCategoryIdActions } from 'store';
 import { conCategory1s } from 'types/categoryListTypes';
 import { conCategory1 } from 'types/categoryTypes';
 import { fetcher } from 'utils/fetcher';
 
 const CategoriesPage: NextPage = () => {
+    const dispatch = useDispatch();
     const [categories, setCategories] = useState<conCategory1 | null>(null);
     const [categoryList, setCategoryList] = useState<conCategory1s[]>([]);
     const router = useRouter();
     const { id } = router.query;
+
     useEffect(() => {
         if (id) {
             const getCategories = async () => {
@@ -38,6 +39,8 @@ const CategoriesPage: NextPage = () => {
                 setCategoryList(conCategory1s);
             };
             getCategoryList();
+
+            dispatch(getCategoryIdActions.category(Number(id)));
             return;
         }
     }, [id]);

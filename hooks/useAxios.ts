@@ -10,7 +10,6 @@ const useAxios = <T>(url: string) => {
         const fetchData = async (url: string) => {
             const { data } = await axios.get(url);
             setDatas(data);
-            console.log(data);
         };
         fetchData(url);
     }, []);

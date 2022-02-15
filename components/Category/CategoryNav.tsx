@@ -62,7 +62,7 @@ const CategoryNav = ({
             slider.current.scrollLeft = scrollLeft - move;
         }
     };
-    console.log('startX:', startX, 'scrollLeft', scrollLeft);
+    // console.log('startX:', startX, 'scrollLeft', scrollLeft);
     return (
         <CategoryNavBar>
             <CategoryNavBox>
