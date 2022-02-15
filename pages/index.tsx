@@ -9,7 +9,6 @@ import { DealItemProps } from 'components/Deal/types';
 import Carousel from 'components/Carousel/Carousel';
 import Main from 'components/Main';
 
-import { CategoryListType } from 'types/categoryListTypes';
 import styled from '@emotion/styled';
 import { Fragment } from 'react';
 import Mypage from 'components/Mypage';
