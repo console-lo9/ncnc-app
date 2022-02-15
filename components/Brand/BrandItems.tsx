@@ -23,7 +23,6 @@ const BrandItems: React.FC<BrandItemsProp> = ({ conCategoryId, brandId }) => {
         }
     }, [brandList]);
 
-    console.log(brandItems);
     return (
         <ul>
             {brandItems?.map((item) => (
@@ -36,11 +35,19 @@ const BrandItems: React.FC<BrandItemsProp> = ({ conCategoryId, brandId }) => {
                             <b>{item.name}</b>
                         </div>
                         <div>
-                            <span>
-                                {item.minSellingPrice / item.originalPrice}
-                            </span>
+                            <DiscountRate>
+                                {Math.ceil(
+                                    100 *
+                                        (1 -
+                                            item.minSellingPrice /
+                                                item.originalPrice),
+                                )}
+                                %
+                            </DiscountRate>
                             <span>{item.minSellingPrice}</span>
-                            <span>{item.originalPrice}</span>
+                            <span>
+                                <s>{item.originalPrice}</s>
+                            </span>
                         </div>
                     </div>
                 </li>
@@ -50,7 +57,13 @@ const BrandItems: React.FC<BrandItemsProp> = ({ conCategoryId, brandId }) => {
 };
 
 const ItemImage = styled.img`
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
+`;
+
+const DiscountRate = styled.span`
+    color: #f75656;
+    font-size: 16px;
+    magin-right: 10px;
 `;
 export default BrandItems;
