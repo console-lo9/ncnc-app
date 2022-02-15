@@ -7,18 +7,17 @@
 //     if (!id) return <div>로딩 중</div>;
 //     return <Category id={Number(id)} />;
 // };
-
-import Category from 'components/Category';
-import { NextPage } from 'next';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getCategoryIdActions } from 'store';
+import { useRouter } from 'next/router';
+
+import Category from 'components/Category';
 import { conCategory1s } from 'types/categoryListTypes';
 import { conCategory1 } from 'types/categoryTypes';
+import { getCategoryIdActions } from 'store';
 import { fetcher } from 'utils/fetcher';
 
-const CategoriesPage: NextPage = () => {
+const CategoriesPage = () => {
     const dispatch = useDispatch();
     const [categories, setCategories] = useState<conCategory1 | null>(null);
     const [categoryList, setCategoryList] = useState<conCategory1s[]>([]);

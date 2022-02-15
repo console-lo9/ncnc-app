@@ -7,7 +7,7 @@ export interface BrandItemsProp {
     conItems: ConItems[];
 }
 
-const BrandItems2: React.FC<BrandItemsProp> = ({ conItems }) => {
+const BrandItems: React.FC<BrandItemsProp> = ({ conItems }) => {
     return (
         <Styled.ItemsHolder>
             {conItems.map((item) => (
@@ -51,4 +51,4 @@ const BrandItems2: React.FC<BrandItemsProp> = ({ conItems }) => {
     );
 };
 
-export default BrandItems2;
+export default BrandItems;

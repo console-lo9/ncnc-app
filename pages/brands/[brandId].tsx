@@ -1,13 +1,19 @@
-import BrandItems from 'components/Brand/BrandItems';
-import { fetcher } from 'utils/fetcher';
 import { useEffect, useState } from 'react';
-import { ConItems } from 'types/items';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
+
+import BrandItems from 'components/Brand/BrandItems';
+import { fetcher } from 'utils/fetcher';
+import { ConItems } from 'types/items';
+import { useRouter } from 'next/router';
 
 //  brands
 
 const BrandId = () => {
+    const router = useRouter();
+    const id = Number(router.query.brandId);
+
+    console.log(id);
     const [category, setCategory] = useState<ConItems[]>([]);
     const brandId = useSelector(
         (state: RootState) => state.brand.selectedBrand,
