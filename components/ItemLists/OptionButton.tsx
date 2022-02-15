@@ -5,10 +5,14 @@ import { Option } from 'types/itemTypes';
 import OptionList from './OptionList';
 import { useDispatch, useSelector } from 'react-redux';
 import { optionActions, RootState } from 'store';
+import Image from 'next/image';
+import pencil from 'assets/pencil.svg';
+import closeButton from 'assets/closeButton.svg';
 
 const OptionContainer = styled.div`
     position: relative;
 `;
+
 const OptionSection = styled.section<{ isOpen: boolean }>`
     display: flex;
     flex-direction: column;
@@ -27,6 +31,7 @@ const OptionSection = styled.section<{ isOpen: boolean }>`
 `;
 const ButtonSection = styled(OptionSection)`
     flex-direction: row;
+    background-color: white;
 `;
 const OptionTitle = styled.div`
     display: flex;
@@ -36,6 +41,9 @@ const OptionTitle = styled.div`
     width: 100%;
     color: rgb(0, 0, 0);
     background: rgb(238, 238, 238);
+`;
+const TitleText = styled.span`
+    flex-grow: 1;
 `;
 const SelectedButton = styled.button`
     display: flex;
@@ -47,10 +55,16 @@ const SelectedButton = styled.button`
     text-align: left;
     width: 100%;
 `;
+const SelectedSpan = styled.span`
+    flex-grow: 1;
+`;
+const ImageDiv = styled.div`
+    padding-right: 10px;
+`;
 const OptionBtn = styled.button<{ disabled: boolean }>`
     position: fixed;
     bottom: 0;
-    background-color: black;
+    background-color: #ff5757;
     color: white;
     width: 100%;
 
@@ -87,27 +101,28 @@ const OptionButton = ({
     options: Option[];
     originalPrice: number;
 }) => {
-    const [buttonText, setButtonText] = useState<string>('옵션 선택하기');
     const [selectedOption, setSelectedOption] = useState<string>('');
     const dispatch = useDispatch();
     const optionState = useSelector((state: RootState) => state.option);
-    const onClick = () => {
+    const optionHandler = () => {
         if (!optionState.isOpen) {
             dispatch(optionActions.changeOpenState(true));
         }
     };
-    useEffect(() => {
-        if (selectedOption) {
-            setButtonText('구매하기');
-        }
-    }, [selectedOption]);
+    const closeHandler = () => {
+        dispatch(optionActions.changeOpenState(false));
+        setSelectedOption('');
+    };
     return (
         <OptionContainer>
             <OptionSection isOpen={optionState.isOpen}>
-                {' '}
-                {/**isOpen={optionState.isOpen} */}
                 <OptionTitle>
-                    <span>옵션 선택하기</span>
+                    <TitleText>옵션 선택하기</TitleText>
+                    <ImageDiv>
+                        <button onClick={closeHandler}>
+                            <Image src={closeButton} />
+                        </button>
+                    </ImageDiv>
                 </OptionTitle>
                 <OptionDiv isOpen={optionState.isOpen}>
                     <OptionList
@@ -120,13 +135,28 @@ const OptionButton = ({
             <ButtonSection
                 isOpen={selectedOption !== '' && !optionState.isOpen}
             >
-                <SelectedButton onClick={onClick}>
-                    <span>{selectedOption}</span>
+                <SelectedButton onClick={optionHandler}>
+                    <SelectedSpan>{selectedOption}</SelectedSpan>
+                    <ImageDiv>
+                        <Image src={pencil} />
+                    </ImageDiv>
                 </SelectedButton>
             </ButtonSection>
-            <OptionBtn disabled={optionState.isOpen} onClick={onClick}>
-                {buttonText}
-            </OptionBtn>
+            {selectedOption === '' && !optionState.isOpen ? (
+                <OptionBtn
+                    disabled={optionState.isOpen}
+                    onClick={optionHandler}
+                >
+                    옵션 선택하기
+                </OptionBtn>
+            ) : (
+                <OptionBtn
+                    disabled={optionState.isOpen}
+                    onClick={optionHandler}
+                >
+                    구매하기
+                </OptionBtn>
+            )}
         </OptionContainer>
     );
 };
