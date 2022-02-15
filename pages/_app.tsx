@@ -19,7 +19,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     const id = Number(splitRouter[2]);
 
     console.log('router:', router.asPath);
-    let name = '';
+    let name: string = '';
 
     useEffect(() => {
         if (id) {
@@ -34,6 +34,8 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
                     const fetchUrl = `con-category2s/${id}`;
                     const { conCategory2 } = await fetcher(fetchUrl);
                     name = conCategory2.name;
+                } else {
+                    name = ' ';
                 }
                 setHeaderTitle(name);
             };

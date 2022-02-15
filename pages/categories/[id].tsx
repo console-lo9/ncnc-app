@@ -1,12 +1,3 @@
-// import Category from 'components/Category';
-// import { useRouter } from 'next/router';
-
-// const CategoriesPage = () => {
-//     const router = useRouter();
-//     const { id } = router.query;
-//     if (!id) return <div>로딩 중</div>;
-//     return <Category id={Number(id)} />;
-// };
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -16,11 +7,13 @@ import { conCategory1s } from 'types/categoryListTypes';
 import { conCategory1 } from 'types/categoryTypes';
 import { getCategoryIdActions } from 'store';
 import { fetcher } from 'utils/fetcher';
+import { DealItemProps } from 'components/Deal/types';
 
 const CategoriesPage = () => {
     const dispatch = useDispatch();
     const [categories, setCategories] = useState<conCategory1 | null>(null);
     const [categoryList, setCategoryList] = useState<conCategory1s[]>([]);
+    const [conItemList, setConItemList] = useState<DealItemProps[]>([]);
     const router = useRouter();
     const { id } = router.query;
 
@@ -38,6 +31,12 @@ const CategoriesPage = () => {
                 setCategoryList(conCategory1s);
             };
             getCategoryList();
+            const getConItems = async () => {
+                const fetchUrl = 'con-items/soon';
+                const { conItems } = await fetcher(fetchUrl);
+                setConItemList(conItems);
+            };
+            getConItems();
 
             dispatch(getCategoryIdActions.category(Number(id)));
             return;
@@ -49,6 +48,7 @@ const CategoriesPage = () => {
                 categories={categories}
                 categoryList={categoryList}
                 id={Number(id)}
+                conItems={conItemList}
             />
         )
     );
