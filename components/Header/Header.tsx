@@ -3,68 +3,54 @@ import styled from '@emotion/styled';
 import iconMenu from '/assets/menu.png';
 import Image from 'next/image';
 import back from '/assets/Back.png';
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 
 const Wrapper = styled.nav`
-    width: 100%;
-    max-width: 672px;
+    width: 375px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     background-color: #ffffff;
-    top: 0px;
-    position: fixed;
-    height: 59px;
     p {
         font-weight: 600;
         font-size: 15px;
-        margin-right: 30px;
+        margin-left: 7.5rem;
     }
 `;
 
 const IconWrap = styled.button`
     width: 50px;
     height: 50px;
-    padding: 10px;
     margin-left: 6px;
 `;
 
-const Text = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-`;
+interface HeaderProps {
+    title: string;
+}
 
-const Header = ({ name }: { name: string }): JSX.Element => {
-    const router = useRouter();
+const Header = ({ title }: HeaderProps) => {
     return (
         <Wrapper>
-            {name ? (
+            {title ? (
                 <>
                     <IconWrap>
-                        <button onClick={() => router.back()}>
+                        <button onClick={() => Router.back()}>
                             <Image src={back} alt="menu" />
                         </button>
                     </IconWrap>
-                    <Text>
-                        <p>{name}</p>
-                    </Text>
+                    <p>{title}</p>
                 </>
             ) : (
                 <>
                     <IconWrap>
                         <Image src={iconMenu} alt="menu" />
                     </IconWrap>
-                    <Text>
-                        <p>니콘 내콘</p>
-                    </Text>
+                    <p>니콘 내콘</p>
                 </>
             )}
         </Wrapper>
     );
 };
-
-const HeaderBox = styled.header``;
 
 export default Header;
