@@ -1,7 +1,14 @@
-import React from 'react'
+import ItemList from 'components/ItemLists/ItemList';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 const Items = () => {
-  return <div>Items</div>
-}
+    const router = useRouter();
+    const { pid } = router.query;
+    console.log(router);
+    // return <Item conItemId={137} />;
 
-export default Items
+    return <ItemList conCategoryId={67} />;
+};
+
+export default Items;
