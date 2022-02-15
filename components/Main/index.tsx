@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { selectBrandActions } from 'store';
 
 import Section from 'layout/Section';
-
-import { CategoryListType } from 'types/categoryListTypes';
+import { ItemsHolder } from 'components/Brand/styled';
+import { conCategory1, conCategory2s } from 'types/categoryTypes';
+import { CategoryListType, conCategory1s } from 'types/categoryListTypes';
 import useAxios from 'hooks/useAxios';
 import { Fragment } from 'react';
 import { SectionWrapper } from 'components/Category';

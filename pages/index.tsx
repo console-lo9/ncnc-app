@@ -12,13 +12,11 @@ import Main from 'components/Main';
 import { CategoryListType } from 'types/categoryListTypes';
 import styled from '@emotion/styled';
 import { Fragment } from 'react';
+import Mypage from 'components/Mypage';
 interface HomeProps {
     conItems: DealItemProps[];
 }
 const Home: NextPage<HomeProps> = ({ conItems }) => {
-    const conCategory1s =
-        useAxios<CategoryListType>('/con-category1s')?.conCategory1s;
-
     useAxios('/con-items/soon');
 
     return (
@@ -32,6 +30,7 @@ const Home: NextPage<HomeProps> = ({ conItems }) => {
                     />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
+                <Mypage />
                 <Carousel />
                 <Main />
                 <Deal onDealItems={conItems} />
