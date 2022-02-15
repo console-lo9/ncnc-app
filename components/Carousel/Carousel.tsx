@@ -75,8 +75,6 @@ const Carousel = () => {
                 <Inner>
                     <Image
                         src={banner1}
-                        width={672}
-                        height={252}
                         alt="menu"
                         layout="fill"
                         sizes="672px"
@@ -85,8 +83,6 @@ const Carousel = () => {
                 <Inner>
                     <Image
                         src={banner2}
-                        width={672}
-                        height={252}
                         alt="menu"
                         layout="fill"
                         sizes="672px"
@@ -95,8 +91,6 @@ const Carousel = () => {
                 <Inner>
                     <Image
                         src={banner3}
-                        width={672}
-                        height={252}
                         alt="menu"
                         layout="fill"
                         sizes="672px"
