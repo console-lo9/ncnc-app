@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import iconMenu from '/assets/menu.png';
 import Image from 'next/image';
 import back from '/assets/Back.png';
+import Router from 'next/router';
 
 const Wrapper = styled.nav`
     width: 375px;
@@ -34,7 +35,7 @@ const Header = ({ title }: HeaderProps) => {
             {title ? (
                 <>
                     <IconWrap>
-                        <button>
+                        <button onClick={() => Router.back()}>
                             <Image src={back} alt="menu" />
                         </button>
                     </IconWrap>
