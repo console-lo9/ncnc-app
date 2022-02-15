@@ -38,9 +38,8 @@ const CategoryNav = ({
 
     return (
         <Styled.CategoryNavBar>
-            <Styled.CategoryNavBox>
+            <Styled.CategoryNavBox ref={slider}>
                 <Styled.CategoryNavSlider
-                    ref={slider}
                     onMouseDown={handleMouseDown}
                     onMouseUp={letDownFalse}
                     onMouseLeave={letDownFalse}
