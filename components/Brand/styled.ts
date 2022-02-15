@@ -6,7 +6,7 @@ export const ItemInfoWrapper = styled.div`
     display: flex;
     padding: 20px 0 20px 30px;
     border-top: 1px solid #eee;
-    background-color: #fff;
+    background-color: rgb(238, 238, 238);
 `;
 
 export const InfoLeft = styled.div``;

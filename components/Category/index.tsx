@@ -92,7 +92,7 @@ const Category = ({
     );
 };
 
-const SectionWrapper = styled.div`
+export const SectionWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 20px;
