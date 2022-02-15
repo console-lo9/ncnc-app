@@ -48,7 +48,7 @@ export const reset = css`
     }
     /* Default CSS */
     body {
-        font-family: 'Noto Sans KR', sans-serif;
+        font-family: apple sd gothic neo, sans-srif;
         font-size: 14px;
         margin: 0;
         background-color: #fff;
