@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 
-import banner1 from '/assets/banner1.png';
-import banner2 from '/assets/banner2.png';
-import banner3 from '/assets/banner3.png';
+import banner1 from '/public/banner1.png';
+import banner2 from '/public/banner2.png';
+import banner3 from '/public/banner3.png';
 
 type ContainerProps = {
     translateX: number;
@@ -75,8 +75,6 @@ const Carousel = () => {
                 <Inner>
                     <Image
                         src={banner1}
-                        width={672}
-                        height={252}
                         alt="menu"
                         layout="fill"
                         sizes="672px"
@@ -85,8 +83,6 @@ const Carousel = () => {
                 <Inner>
                     <Image
                         src={banner2}
-                        width={672}
-                        height={252}
                         alt="menu"
                         layout="fill"
                         sizes="672px"
@@ -95,8 +91,6 @@ const Carousel = () => {
                 <Inner>
                     <Image
                         src={banner3}
-                        width={672}
-                        height={252}
                         alt="menu"
                         layout="fill"
                         sizes="672px"
@@ -106,7 +100,7 @@ const Carousel = () => {
             <Buttons>
                 {[0, 1, 2].map((dot, i) => (
                     <BtnDiv
-                        key={Math.random()}
+                        key={i}
                         onClick={() => ClickHandler(dot)}
                         isActive={current === dot}
                     />

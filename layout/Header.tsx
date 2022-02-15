@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import iconMenu from '/assets/menu.png';
 import Image from 'next/image';
-import back from '/assets/Back.png';
+import back from '/public/Back.svg';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { mypageActions } from 'store';
@@ -50,7 +50,7 @@ const Header = ({ name }: { name: string }): JSX.Element => {
     };
     return (
         <Wrapper className={name === ' ' ? 'detail' : ''}>
-            {name ? (
+            {name && router.asPath !== '/' && (
                 <>
                     <IconWrap>
                         <button onClick={() => router.back()}>
@@ -61,13 +61,14 @@ const Header = ({ name }: { name: string }): JSX.Element => {
                         <p>{name}</p>
                     </Text>
                 </>
-            ) : (
+            )}
+            {router.asPath === '/' && (
                 <>
                     <IconWrap onClick={openHandler}>
                         <Image src={iconMenu} alt="menu" />
                     </IconWrap>
                     <Text>
-                        <p>니콘 내콘</p>
+                        <p>니콘내콘</p>
                     </Text>
                 </>
             )}
