@@ -24,22 +24,16 @@ const CategoryNav = ({
             setScrollLeft(slider.current.scrollLeft);
         }
     };
-    const handleMouseLeave = () => {
-        setIsDown(false);
-    };
-
-    const handleMouseEnter = () => {
+    const letDownFalse = () => {
         setIsDown(false);
     };
 
     const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
         if (!isDown) return;
         event.preventDefault();
-        if (slider.current) {
-            const x = event.pageX - slider.current.offsetLeft;
-            const move = x - startX;
-            slider.current.scrollLeft = scrollLeft - move;
-        }
+        const x = event.pageX - slider.current!.offsetLeft;
+        const move = x - startX;
+        slider.current!.scrollLeft = scrollLeft - move;
     };
 
     return (
@@ -48,8 +42,8 @@ const CategoryNav = ({
                 <Styled.CategoryNavSlider
                     ref={slider}
                     onMouseDown={handleMouseDown}
-                    onMouseLeave={handleMouseLeave}
-                    onMouseEnter={handleMouseEnter}
+                    onMouseUp={letDownFalse}
+                    onMouseLeave={letDownFalse}
                     onMouseMove={handleMouseMove}
                 >
                     {categoryList.map((category: conCategory1s, i: number) => (
