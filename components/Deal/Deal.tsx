@@ -1,16 +1,12 @@
 import Link from 'next/link';
-import { ConItems } from 'types/items';
+import React from 'react';
+import * as Styled from '../Brand/styled';
+import { DealItemProps } from './types';
 
-import * as Styled from './styled';
-
-export interface BrandItemsProp {
-    conItems: ConItems[];
-}
-
-const BrandItems2: React.FC<BrandItemsProp> = ({ conItems }) => {
+const Deal: React.FC<{ onDealItems: DealItemProps[] }> = ({ onDealItems }) => {
     return (
         <Styled.ItemsHolder>
-            {conItems.map((item) => (
+            {onDealItems.map((item) => (
                 <li key={item.id}>
                     <Link href={`/items/${item.id}`}>
                         <Styled.ItemInfoWrapper>
@@ -51,4 +47,4 @@ const BrandItems2: React.FC<BrandItemsProp> = ({ conItems }) => {
     );
 };
 
-export default BrandItems2;
+export default Deal;
