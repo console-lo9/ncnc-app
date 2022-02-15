@@ -27,7 +27,11 @@ const BrandItems: React.FC<BrandItemsProp> = ({ conCategoryId, brandId }) => {
         if (brandList) {
             setBrandItems(brandList[selectedBrand].conItems);
         }
-    }, [brandList]);
+    }, [brandList, conCategoryId]);
+
+    if (!brandItems) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <Styled.ItemsHolder>
