@@ -28,9 +28,13 @@ const BrandId = () => {
 
             setCategory(conItems);
         };
+
         getCategories();
     }, []);
 
+    if (!categoryId) {
+        return <div>Loading...</div>;
+    }
     return <BrandItems conItems={category} />;
 };
 
