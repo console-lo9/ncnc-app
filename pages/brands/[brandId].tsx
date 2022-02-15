@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router';
+import BrandItems from 'components/Brand/BrandItems';
 
 //  brands
 
-const BrandItems = () => {
+const BrandId = () => {
     const router = useRouter();
+    const brandId = Number(router.query.brandId);
 
-    const brandId = router.query.brandId;
-
-    return <div>BrandItems</div>;
+    return <BrandItems conCategoryId={67} brandId={brandId} />;
 };
 
-export default BrandItems;
+export default BrandId;

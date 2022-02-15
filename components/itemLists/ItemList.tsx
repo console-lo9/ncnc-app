@@ -1,9 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
-import { BrandType, ImageProps } from 'types/items';
+import React, { useEffect, useState } from 'react';
+import { BrandType } from 'types/items';
 import styled from '@emotion/styled';
-import Image from 'next/image';
-import Link from 'next/link';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDataActions, RootState } from 'store';
 
 const ItemList: React.FC<{
     conCategoryId: number;
@@ -11,7 +12,6 @@ const ItemList: React.FC<{
     const [brandItems, setBrandItems] = useState([]);
 
     //   임시 브랜드리스트는 스타벅스로
-
     useEffect(() => {
         const fetchData = async () => {
             const { data }: any = await axios.get(
